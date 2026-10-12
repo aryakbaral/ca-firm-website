@@ -120,26 +120,22 @@ export default function Home() {
     <>
       {/* ============ HERO ============ */}
       <section className="relative overflow-hidden bg-paper">
-        <div aria-hidden="true" className="ledger-grid-light absolute inset-0" />
-        <div
-          aria-hidden="true"
-          className="absolute -right-40 -top-40 h-[30rem] w-[30rem] rounded-full bg-gold-500/10 blur-3xl"
-        />
-        <div className="relative mx-auto grid max-w-7xl gap-14 px-6 pb-16 pt-16 sm:px-10 lg:grid-cols-[1.15fr_0.85fr] lg:pb-24 lg:pt-24">
+        <div aria-hidden="true" className="column-rules absolute inset-0" />
+        <div aria-hidden="true" className="rosette absolute -right-48 -top-64 h-[46rem] w-[46rem]" />
+        <div className="relative mx-auto grid max-w-7xl gap-12 px-6 pb-12 pt-12 sm:px-10 lg:grid-cols-[1.15fr_0.85fr] lg:pb-16 lg:pt-16">
           <div>
             <Eyebrow>
               {site.descriptor} · {site.city}
             </Eyebrow>
-            <h1 className="mt-6 font-display text-4xl leading-[1.06] text-navy-900 sm:text-5xl lg:text-[3.6rem]">
-              <em className="italic text-gold-600">Trusted</em> audit, tax and advisory services
-              for businesses and institutions.
+            <h1 className="mt-5 font-display text-4xl leading-[1.05] text-navy-900 sm:text-5xl lg:text-[3.3rem]">
+              <em className="italic text-gold-600">Trusted</em> audit, tax and advisory services.
             </h1>
-            <p className="mt-6 max-w-xl text-lg leading-relaxed text-ink/75">
-              {site.name} is a firm of Chartered Accountants delivering assurance, compliance and
-              growth-oriented counsel — from statutory audit and VAT to board-level advisory —
-              with independence and complete confidentiality.
+            <p className="mt-5 max-w-xl text-base leading-relaxed text-ink/75 sm:text-lg">
+              Chartered Accountants in Lalitpur serving businesses and institutions — assurance,
+              compliance and growth-oriented counsel, delivered with independence and complete
+              confidentiality.
             </p>
-            <div className="mt-9 flex flex-wrap items-center gap-4">
+            <div className="mt-8 flex flex-wrap items-center gap-4">
               <Button href="/consultation">Request a Consultation</Button>
               <Button href="/services" variant="outline">
                 Explore Our Services
@@ -151,18 +147,15 @@ export default function Home() {
                 Contact our team →
               </Link>
             </div>
-            <p className="mt-12 font-mono text-[10px] uppercase tracking-[0.22em] text-ink/45">
-              Companies · Banks & insurers · NGOs · Cooperatives · Startups · Public institutions
-            </p>
           </div>
 
-          <aside className="self-start border-t-2 border-gold-500 bg-white p-7 shadow-lg shadow-navy-900/5 sm:p-8">
+          <aside className="self-start border-t-2 border-gold-500 bg-white p-6 shadow-lg shadow-navy-900/5 sm:p-7">
             <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-ink/50">
               The firm&apos;s promise
             </p>
-            <ul className="mt-4 divide-y divide-navy-900/10">
+            <ul className="mt-3 divide-y divide-navy-900/10">
               {promises.map((p) => (
-                <li key={p.title} className="flex gap-4 py-4">
+                <li key={p.title} className="flex gap-4 py-3">
                   <svg
                     width="16"
                     height="16"
@@ -180,7 +173,7 @@ export default function Home() {
                 </li>
               ))}
             </ul>
-            <div className="mt-2 flex items-center justify-between border-t border-navy-900/10 pt-4">
+            <div className="mt-1 flex items-center justify-between border-t border-navy-900/10 pt-4">
               <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-ink/50">
                 Partner line
               </span>
@@ -192,6 +185,13 @@ export default function Home() {
               </a>
             </div>
           </aside>
+        </div>
+
+        {/* Trust strip pinned to hero base */}
+        <div className="relative border-t border-navy-900/10 bg-white/70">
+          <p className="mx-auto max-w-7xl px-6 py-3.5 font-mono text-[10px] uppercase tracking-[0.22em] text-ink/50 sm:px-10">
+            Companies · Banks & insurers · NGOs · Cooperatives · Startups · Public institutions
+          </p>
         </div>
       </section>
 
