@@ -1,140 +1,468 @@
 import Link from "next/link";
 import { site } from "@/lib/site";
-import { Button, Eyebrow } from "@/components/ui";
+import { Button, Eyebrow, SectionHeading } from "@/components/ui";
+import Reveal from "@/components/Reveal";
+import CountUp from "@/components/CountUp";
 
-const phases = [
-  { no: "01", name: "Foundation & deployment", status: "LIVE", live: true },
-  { no: "02", name: "Design system & site shell", status: "LIVE", live: true },
-  { no: "03", name: "Full pages · services · industries", status: "NEXT", live: false },
-  { no: "04", name: "Supabase forms & admin dashboard", status: "PLANNED", live: false },
+const stats = [
+  { value: 15, suffix: "+", label: "Years of practice" },
+  { value: 300, suffix: "+", label: "Clients served" },
+  { value: 12, suffix: "", label: "Professionals" },
+  { value: 14, suffix: "", label: "Industries served" },
+  { value: 900, suffix: "+", label: "Engagements completed" },
+];
+
+const serviceChips = {
+  "audit-assurance": ["Statutory audit", "Internal audit", "Forensic audit"],
+  taxation: ["Corporate tax", "VAT / GST", "Tax representation"],
+  "accounting-bookkeeping": ["Bookkeeping", "Management accounts", "IFRS / NFRS reporting"],
+  "business-advisory": ["Feasibility studies", "Financial modelling", "Due diligence"],
+  "corporate-services": ["Company secretarial", "Annual returns", "Governance advisory"],
+  "payroll-hr": ["Payroll processing", "Statutory deductions", "HR policy"],
+};
+
+const industries = [
+  "Banking & financial services",
+  "Insurance",
+  "Manufacturing",
+  "Retail & distribution",
+  "Real estate & construction",
+  "Healthcare",
+  "Education",
+  "NGOs & donor-funded organisations",
+  "Public sector",
+  "Technology & startups",
+  "Hospitality",
+  "Logistics & transport",
+  "Professional services",
+  "Energy & hydropower",
+];
+
+const promises = [
+  { title: "Independence", text: "Objective opinions, free of conflicts — always." },
+  { title: "Confidentiality", text: "Engagement data stays within our controlled systems." },
+  { title: "Rigour", text: "Every conclusion documented, reviewed and standards-based." },
+  { title: "Responsiveness", text: "A partner replies within one business day." },
+];
+
+const principles = ["Partner-signed reports", "Documented working papers", "Two-level review, minimum"];
+
+const whyUs = [
+  {
+    no: "01",
+    title: "Partner-led engagements",
+    text: "A Chartered Accountant partner signs and stays accountable for your file from planning to final report — no silent hand-offs to juniors.",
+  },
+  {
+    no: "02",
+    title: "Evidence, not opinion",
+    text: "Our working papers, checklists and review notes follow Nepal Standards on Auditing and NFRS/IFRS practice, so every figure we stand behind can be traced.",
+  },
+  {
+    no: "03",
+    title: "Deadlines treated as commitments",
+    text: "A statutory calendar is mapped per client at onboarding; filings are tracked, reminded and completed ahead of due dates.",
+  },
+  {
+    no: "04",
+    title: "Advice you can act on",
+    text: "We write in plain language with costs, risks and options quantified — memos your board can decide from, not academic essays.",
+  },
+];
+
+const testimonials = [
+  {
+    quote:
+      "They rebuilt three years of books and walked our board through the audit without a single surprise. The clearest firm we have worked with.",
+    who: "Finance Manager",
+    where: "Manufacturing group, Lalitpur",
+  },
+  {
+    quote:
+      "Our donor audits used to take months of back-and-forth. Their compliance calendar and file discipline cut it to weeks.",
+    who: "Executive Director",
+    where: "Donor-funded NGO",
+  },
+  {
+    quote:
+      "Practical tax advice with the sections cited and the numbers shown. They treat our deadlines as their own.",
+    who: "Founder",
+    where: "Technology startup, Kathmandu",
+  },
+];
+
+const posts = [
+  {
+    category: "Tax Alert",
+    date: "6 Oct 2026",
+    title: "Finance Act updates: what changes for companies and taxpayers this year",
+    excerpt:
+      "A partner's summary of the rates, thresholds and compliance changes that matter most to Nepali businesses.",
+  },
+  {
+    category: "Audit Update",
+    date: "22 Sep 2026",
+    title: "Auditing under NFRS: the adjustments we saw most this season",
+    excerpt:
+      "Field observations from recent statutory audits, and how to prepare your file before we arrive.",
+  },
+  {
+    category: "Compliance Calendar",
+    date: "30 Sep 2026",
+    title: "Quarterly VAT and TDS filing deadlines — what to prepare now",
+    excerpt:
+      "The documents, reconciliations and approvals to line up before the next statutory due date.",
+  },
 ];
 
 export default function Home() {
   return (
     <>
-      {/* Statement */}
+      {/* ============ HERO ============ */}
       <section className="relative overflow-hidden bg-paper">
         <div aria-hidden="true" className="ledger-grid-light absolute inset-0" />
-        <div aria-hidden="true" className="absolute -right-40 -top-40 h-[30rem] w-[30rem] rounded-full bg-gold-500/10 blur-3xl" />
-        <div className="relative mx-auto grid max-w-7xl gap-14 px-6 py-20 sm:px-10 lg:grid-cols-[1.15fr_0.85fr] lg:py-28">
+        <div
+          aria-hidden="true"
+          className="absolute -right-40 -top-40 h-[30rem] w-[30rem] rounded-full bg-gold-500/10 blur-3xl"
+        />
+        <div className="relative mx-auto grid max-w-7xl gap-14 px-6 pb-16 pt-16 sm:px-10 lg:grid-cols-[1.15fr_0.85fr] lg:pb-24 lg:pt-24">
           <div>
             <Eyebrow>
               {site.descriptor} · {site.city}
             </Eyebrow>
-            <h1 className="animate-rise mt-6 font-display text-4xl leading-[1.08] text-navy-900 sm:text-5xl lg:text-6xl">
-              Clarity in every figure. <em className="italic text-gold-600">Confidence</em> in
-              every decision.
+            <h1 className="mt-6 font-display text-4xl leading-[1.06] text-navy-900 sm:text-5xl lg:text-[3.6rem]">
+              <em className="italic text-gold-600">Trusted</em> audit, tax and advisory services
+              for businesses and institutions.
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-ink/75">
-              {site.name} delivers audit & assurance, taxation, accounting and advisory services
-              to companies, institutions, NGOs, startups and individuals — with independence,
-              confidentiality and rigour.
+              {site.name} is a firm of Chartered Accountants delivering assurance, compliance and
+              growth-oriented counsel — from statutory audit and VAT to board-level advisory —
+              with independence and complete confidentiality.
             </p>
-            <div className="mt-9 flex flex-wrap gap-4">
+            <div className="mt-9 flex flex-wrap items-center gap-4">
               <Button href="/consultation">Request a Consultation</Button>
               <Button href="/services" variant="outline">
                 Explore Our Services
               </Button>
+              <Link
+                href="/contact"
+                className="font-mono text-[11px] uppercase tracking-[0.22em] text-navy-900 underline decoration-gold-500 underline-offset-8 transition-colors hover:text-gold-700"
+              >
+                Contact our team →
+              </Link>
             </div>
+            <p className="mt-12 font-mono text-[10px] uppercase tracking-[0.22em] text-ink/45">
+              Companies · Banks & insurers · NGOs · Cooperatives · Startups · Public institutions
+            </p>
           </div>
 
-          <aside
-            className="animate-rise self-start border-t-2 border-gold-500 bg-white p-7 shadow-lg shadow-navy-900/5"
-            style={{ animationDelay: "150ms" }}
-          >
+          <aside className="self-start border-t-2 border-gold-500 bg-white p-7 shadow-lg shadow-navy-900/5 sm:p-8">
             <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-ink/50">
-              Reach the firm
+              The firm&apos;s promise
             </p>
-            <dl className="mt-5 space-y-4 text-sm">
-              <div className="flex justify-between gap-4 border-b border-navy-900/10 pb-3">
-                <dt className="pt-0.5 font-mono text-[10px] uppercase tracking-[0.2em] text-ink/50">Phone</dt>
-                <dd>
-                  <a href={`tel:${site.phoneHref}`} className="font-semibold text-navy-900 hover:text-gold-700">
-                    {site.phone}
-                  </a>
-                </dd>
-              </div>
-              <div className="flex justify-between gap-4 border-b border-navy-900/10 pb-3">
-                <dt className="pt-0.5 font-mono text-[10px] uppercase tracking-[0.2em] text-ink/50">Email</dt>
-                <dd>
-                  <a href={`mailto:${site.email}`} className="font-semibold text-navy-900 hover:text-gold-700">
-                    {site.email}
-                  </a>
-                </dd>
-              </div>
-              <div className="flex justify-between gap-4 border-b border-navy-900/10 pb-3">
-                <dt className="pt-0.5 font-mono text-[10px] uppercase tracking-[0.2em] text-ink/50">Office</dt>
-                <dd className="font-semibold text-navy-900">{site.city}</dd>
-              </div>
-              <div className="flex justify-between gap-4">
-                <dt className="pt-0.5 font-mono text-[10px] uppercase tracking-[0.2em] text-ink/50">Hours</dt>
-                <dd className="font-semibold text-navy-900">{site.hours}</dd>
-              </div>
-            </dl>
+            <ul className="mt-4 divide-y divide-navy-900/10">
+              {promises.map((p) => (
+                <li key={p.title} className="flex gap-4 py-4">
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    aria-hidden="true"
+                    className="mt-1 shrink-0 text-gold-600"
+                  >
+                    <path d="M2 8.5l4 4 8-9" stroke="currentColor" strokeWidth="1.8" />
+                  </svg>
+                  <div>
+                    <p className="font-semibold text-navy-900">{p.title}</p>
+                    <p className="mt-0.5 text-sm leading-relaxed text-ink/65">{p.text}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-2 flex items-center justify-between border-t border-navy-900/10 pt-4">
+              <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-ink/50">
+                Partner line
+              </span>
+              <a
+                href={`tel:${site.phoneHref}`}
+                className="font-display text-lg text-navy-900 transition-colors hover:text-gold-700"
+              >
+                {site.phone}
+              </a>
+            </div>
           </aside>
         </div>
       </section>
 
-      {/* Build ledger */}
+      {/* ============ FIRM INTRO ============ */}
       <section className="border-y border-navy-900/10 bg-white">
-        <div className="mx-auto grid max-w-7xl gap-10 px-6 py-14 sm:px-10 lg:grid-cols-[0.9fr_1.1fr]">
-          <div>
-            <Eyebrow>Website build ledger</Eyebrow>
-            <h2 className="mt-4 font-display text-3xl text-navy-900">
-              Phase 02 of 13 — site shell live
-            </h2>
-            <p className="mt-4 leading-relaxed text-ink/70">
-              Navigation, footer and the light corporate design system are now deployed. Full
-              content pages follow in the next phases.
-            </p>
-          </div>
-          <ul>
-            {phases.map((p) => (
-              <li
-                key={p.no}
-                className="flex items-baseline justify-between gap-4 border-b border-navy-900/10 py-3"
-              >
-                <span className="font-mono text-xs text-gold-700">{p.no}</span>
-                <span className="flex-1 text-sm font-medium text-ink/80">{p.name}</span>
-                <span
-                  className={`font-mono text-[10px] tracking-[0.2em] ${
-                    p.live ? "text-forest-700" : "text-ink/40"
-                  }`}
+        <div className="mx-auto grid max-w-7xl gap-14 px-6 py-20 sm:px-10 lg:grid-cols-2 lg:py-24">
+          <Reveal>
+            <SectionHeading
+              eyebrow="The firm"
+              title="A practice built on independence and evidence."
+              intro="Founded in Lalitpur, Baral & K.C. Associates serves owners, boards and finance teams who need their numbers to withstand scrutiny — from the Inland Revenue Department to donors, lenders and regulators."
+            />
+            <div className="mt-8">
+              <Button href="/about" variant="outline">
+                About the firm
+              </Button>
+            </div>
+          </Reveal>
+          <Reveal delay={120}>
+            <figure className="border-l-2 border-gold-500 bg-paper p-8 sm:p-10">
+              <blockquote className="font-display text-2xl leading-snug text-navy-900 sm:text-[1.7rem]">
+                “An audit is not a ritual. It is the reason your stakeholders can act without
+                doubt.”
+              </blockquote>
+              <figcaption className="mt-6 font-mono text-[11px] uppercase tracking-[0.24em] text-ink/55">
+                Engagement philosophy · {site.name}
+              </figcaption>
+            </figure>
+            <ul className="mt-8 grid gap-3 sm:grid-cols-3">
+              {principles.map((p) => (
+                <li
+                  key={p}
+                  className="border border-navy-900/10 bg-paper px-4 py-3 text-center font-mono text-[10px] uppercase tracking-[0.14em] text-ink/65"
                 >
-                  {p.live ? "✓ " : ""}
-                  {p.status}
-                </span>
-              </li>
-            ))}
-          </ul>
+                  {p}
+                </li>
+              ))}
+            </ul>
+          </Reveal>
         </div>
       </section>
 
-      {/* Practices preview */}
-      <section className="mx-auto max-w-7xl px-6 py-16 sm:px-10">
-        <div className="flex items-end justify-between gap-6">
-          <h2 className="font-display text-3xl text-navy-900">Six practices</h2>
-          <Link
-            href="/services"
-            className="font-mono text-[11px] uppercase tracking-[0.22em] text-gold-700 transition-colors hover:text-gold-600"
-          >
-            View all services →
-          </Link>
+      {/* ============ STATS BAND ============ */}
+      <section className="relative overflow-hidden bg-navy-950">
+        <div aria-hidden="true" className="ledger-grid absolute inset-0" />
+        <div className="relative mx-auto max-w-7xl px-6 py-16 sm:px-10 lg:py-20">
+          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-5">
+            {stats.map((s, i) => (
+              <Reveal key={s.label} delay={i * 90}>
+                <p className="font-display text-4xl text-gold-400 sm:text-5xl">
+                  <CountUp to={s.value} suffix={s.suffix} />
+                </p>
+                <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.22em] text-white/60">
+                  {s.label}
+                </p>
+              </Reveal>
+            ))}
+          </div>
         </div>
-        <div className="mt-8 grid gap-px border border-navy-900/10 bg-navy-900/10 sm:grid-cols-2 lg:grid-cols-3">
+      </section>
+
+      {/* ============ SERVICES LEDGER ============ */}
+      <section className="mx-auto max-w-7xl px-6 py-20 sm:px-10 lg:py-24">
+        <div className="flex flex-wrap items-end justify-between gap-6">
+          <SectionHeading eyebrow="What we do" title="Six practices, one standard of care." />
+          <Button href="/services" variant="outline">
+            All services
+          </Button>
+        </div>
+        <div className="mt-12 border-t border-navy-900/10">
           {site.services.map((s, i) => (
-            <Link
-              key={s.slug}
-              href={`/services/${s.slug}`}
-              className="group bg-white p-6 transition-colors hover:bg-paper"
-            >
-              <p className="font-mono text-xs text-gold-700">{String(i + 1).padStart(2, "0")}</p>
-              <p className="mt-3 font-display text-xl text-navy-900 transition-colors group-hover:text-gold-700">
-                {s.title}
-              </p>
-              <p className="mt-2 text-sm leading-relaxed text-ink/65">{s.blurb}</p>
-            </Link>
+            <Reveal key={s.slug} delay={i * 60}>
+              <Link
+                href={`/services/${s.slug}`}
+                className="group grid gap-4 border-b border-navy-900/10 py-7 transition-colors hover:bg-white md:grid-cols-[4rem_1fr_auto] md:items-center md:px-4"
+              >
+                <span className="font-mono text-xs text-gold-700">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <span>
+                  <span className="block font-display text-2xl text-navy-900 transition-colors group-hover:text-gold-700">
+                    {s.title}
+                  </span>
+                  <span className="mt-1 block max-w-2xl text-sm leading-relaxed text-ink/65">
+                    {s.blurb}
+                  </span>
+                  <span className="mt-3 flex flex-wrap gap-2">
+                    {serviceChips[s.slug].map((c) => (
+                      <span
+                        key={c}
+                        className="border border-navy-900/15 bg-paper px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.14em] text-ink/60"
+                      >
+                        {c}
+                      </span>
+                    ))}
+                  </span>
+                </span>
+                <span className="hidden font-mono text-[11px] uppercase tracking-[0.2em] text-ink/40 transition-all group-hover:translate-x-1 group-hover:text-gold-700 md:block">
+                  View practice →
+                </span>
+              </Link>
+            </Reveal>
           ))}
+        </div>
+      </section>
+
+      {/* ============ INDUSTRIES ============ */}
+      <section className="border-y border-navy-900/10 bg-mist">
+        <div className="mx-auto grid max-w-7xl gap-12 px-6 py-20 sm:px-10 lg:grid-cols-[0.9fr_1.1fr] lg:py-24">
+          <Reveal>
+            <SectionHeading
+              eyebrow="Sector experience"
+              title="Fourteen industries, one disciplined method."
+              intro="Regulatory environments differ; our method does not. We map the statutes, standards and reporting packs your sector lives by before fieldwork begins."
+            />
+            <div className="mt-8">
+              <Button href="/industries" variant="outline">
+                Industries we serve
+              </Button>
+            </div>
+          </Reveal>
+          <Reveal delay={120}>
+            <ul className="grid gap-x-8 sm:grid-cols-2">
+              {industries.map((name, i) => (
+                <li key={name} className="flex items-baseline gap-3 border-b border-navy-900/10 py-3">
+                  <span className="font-mono text-[10px] text-gold-700">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span className="text-sm font-medium text-ink/80">{name}</span>
+                </li>
+              ))}
+            </ul>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ============ WHY US ============ */}
+      <section className="mx-auto max-w-7xl px-6 py-20 sm:px-10 lg:py-24">
+        <SectionHeading
+          eyebrow="Why firms choose us"
+          title="The difference is in the discipline."
+        />
+        <div className="mt-12 grid gap-px border border-navy-900/10 bg-navy-900/10 md:grid-cols-2">
+          {whyUs.map((w, i) => (
+            <Reveal key={w.no} delay={i * 80} className="bg-white">
+              <div className="h-full p-8 sm:p-10">
+                <p className="font-display text-4xl text-gold-500/80">{w.no}</p>
+                <h3 className="mt-4 font-display text-xl text-navy-900">{w.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-ink/70">{w.text}</p>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
+      {/* ============ TESTIMONIALS ============ */}
+      <section className="border-y border-navy-900/10 bg-paper">
+        <div className="mx-auto max-w-7xl px-6 py-20 sm:px-10 lg:py-24">
+          <SectionHeading
+            eyebrow="Client words"
+            title="Confidence, in their words."
+            intro="Names withheld under our confidentiality policy; role and sector shown with permission."
+          />
+          <div className="mt-12 grid gap-8 lg:grid-cols-3">
+            {testimonials.map((t, i) => (
+              <Reveal key={t.who} delay={i * 100} className={i === 1 ? "lg:mt-10" : ""}>
+                <figure className="flex h-full flex-col border border-navy-900/10 bg-white p-8">
+                  <span aria-hidden="true" className="font-display text-5xl leading-none text-gold-500">
+                    “
+                  </span>
+                  <blockquote className="mt-2 flex-1 text-[0.95rem] leading-relaxed text-ink/80">
+                    {t.quote}
+                  </blockquote>
+                  <figcaption className="mt-6 border-t border-navy-900/10 pt-4">
+                    <p className="font-semibold text-navy-900">{t.who}</p>
+                    <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.18em] text-ink/50">
+                      {t.where}
+                    </p>
+                  </figcaption>
+                </figure>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ============ INSIGHTS PREVIEW ============ */}
+      <section className="mx-auto max-w-7xl px-6 py-20 sm:px-10 lg:py-24">
+        <div className="flex flex-wrap items-end justify-between gap-6">
+          <SectionHeading eyebrow="Knowledge hub" title="Updates worth your attention." />
+          <Button href="/insights" variant="outline">
+            All insights
+          </Button>
+        </div>
+        <div className="mt-12 grid gap-8 md:grid-cols-3">
+          {posts.map((p, i) => (
+            <Reveal key={p.title} delay={i * 90}>
+              <Link
+                href="/insights"
+                className="group flex h-full flex-col border-t-2 border-gold-500 bg-paper p-7 transition-colors hover:bg-white"
+              >
+                <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-gold-700">
+                  {p.category} · {p.date}
+                </p>
+                <h3 className="mt-4 font-display text-xl leading-snug text-navy-900 transition-colors group-hover:text-gold-700">
+                  {p.title}
+                </h3>
+                <p className="mt-3 flex-1 text-sm leading-relaxed text-ink/65">{p.excerpt}</p>
+                <span className="mt-6 font-mono text-[10px] uppercase tracking-[0.2em] text-ink/45 transition-colors group-hover:text-gold-700">
+                  Read note →
+                </span>
+              </Link>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
+      {/* ============ CONTACT / CTA BAND ============ */}
+      <section className="relative overflow-hidden bg-navy-950">
+        <div aria-hidden="true" className="ledger-grid absolute inset-0" />
+        <div className="relative mx-auto max-w-7xl px-6 py-20 sm:px-10 lg:py-24">
+          <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr]">
+            <Reveal>
+              <Eyebrow onDark>Begin the conversation</Eyebrow>
+              <h2 className="mt-4 font-display text-3xl leading-tight text-white sm:text-4xl">
+                Speak to a partner — not a call centre.
+              </h2>
+              <p className="mt-5 max-w-lg text-lg leading-relaxed text-white/70">
+                Tell us what you need assured, filed, fixed or planned. We respond within one
+                business day, in confidence.
+              </p>
+              <div className="mt-8 flex flex-wrap gap-4">
+                <Button href="/consultation" variant="gold">
+                  Request a Consultation
+                </Button>
+                <Button href="/contact" variant="light">
+                  Contact Our Team
+                </Button>
+              </div>
+            </Reveal>
+            <Reveal delay={120}>
+              <dl className="grid gap-6 sm:grid-cols-3 lg:grid-cols-1 lg:border-l lg:border-white/10 lg:pl-10">
+                <div>
+                  <dt className="font-mono text-[10px] uppercase tracking-[0.22em] text-white/50">
+                    Visit
+                  </dt>
+                  <dd className="mt-1 text-sm text-white/80">{site.address}</dd>
+                </div>
+                <div>
+                  <dt className="font-mono text-[10px] uppercase tracking-[0.22em] text-white/50">
+                    Call
+                  </dt>
+                  <dd className="mt-1 text-sm">
+                    <a href={`tel:${site.phoneHref}`} className="text-white/80 transition-colors hover:text-gold-300">
+                      {site.phone}
+                    </a>
+                  </dd>
+                </div>
+                <div>
+                  <dt className="font-mono text-[10px] uppercase tracking-[0.22em] text-white/50">
+                    Write
+                  </dt>
+                  <dd className="mt-1 text-sm">
+                    <a href={`mailto:${site.email}`} className="text-white/80 transition-colors hover:text-gold-300">
+                      {site.email}
+                    </a>
+                  </dd>
+                </div>
+              </dl>
+            </Reveal>
+          </div>
         </div>
       </section>
     </>
