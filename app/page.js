@@ -45,6 +45,12 @@ const promises = [
   { title: "Responsiveness", text: "A partner replies within one business day." },
 ];
 
+const credentials = [
+  { label: "Regulated by", value: "ICAN" },
+  { label: "Standards", value: "NSA · NFRS / IFRS" },
+  { label: "Response", value: "One business day" },
+];
+
 const principles = ["Partner-signed reports", "Documented working papers", "Two-level review, minimum"];
 
 const whyUs = [
@@ -119,10 +125,10 @@ export default function Home() {
   return (
     <>
       {/* ============ HERO ============ */}
-      <section className="relative overflow-hidden bg-paper">
+      <section className="relative flex flex-col overflow-hidden bg-paper lg:min-h-[calc(100svh-7rem)]">
         <div aria-hidden="true" className="column-rules absolute inset-0" />
         <div aria-hidden="true" className="rosette absolute -right-48 -top-64 h-[46rem] w-[46rem]" />
-        <div className="relative mx-auto grid max-w-7xl gap-12 px-6 pb-12 pt-12 sm:px-10 lg:grid-cols-[1.15fr_0.85fr] lg:pb-16 lg:pt-16">
+        <div className="relative mx-auto grid w-full max-w-7xl flex-1 content-center gap-12 px-6 pb-12 pt-12 sm:px-10 lg:grid-cols-[1.15fr_0.85fr] lg:pb-16 lg:pt-16">
           <div>
             <Eyebrow>
               {site.descriptor} · {site.city}
@@ -147,13 +153,23 @@ export default function Home() {
                 Contact our team →
               </Link>
             </div>
+            <dl className="mt-10 grid max-w-md grid-cols-3 gap-6 border-t border-navy-900/10 pt-6">
+              {credentials.map((c) => (
+                <div key={c.label}>
+                  <dt className="font-mono text-[10px] uppercase tracking-[0.2em] text-ink/50">
+                    {c.label}
+                  </dt>
+                  <dd className="mt-1 text-sm font-semibold text-navy-900">{c.value}</dd>
+                </div>
+              ))}
+            </dl>
           </div>
 
-          <aside className="self-start border-t-2 border-gold-500 bg-white p-6 shadow-lg shadow-navy-900/5 sm:p-7">
+          <aside className="flex h-full flex-col border-t-2 border-gold-500 bg-white p-6 shadow-lg shadow-navy-900/5 sm:p-7">
             <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-ink/50">
               The firm&apos;s promise
             </p>
-            <ul className="mt-3 divide-y divide-navy-900/10">
+            <ul className="mt-3 flex-1 divide-y divide-navy-900/10">
               {promises.map((p) => (
                 <li key={p.title} className="flex gap-4 py-3">
                   <svg
@@ -173,7 +189,7 @@ export default function Home() {
                 </li>
               ))}
             </ul>
-            <div className="mt-1 flex items-center justify-between border-t border-navy-900/10 pt-4">
+            <div className="mt-4 flex items-center justify-between border-t border-navy-900/10 pt-4">
               <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-ink/50">
                 Partner line
               </span>
@@ -187,7 +203,7 @@ export default function Home() {
           </aside>
         </div>
 
-        {/* Trust strip pinned to hero base */}
+        {/* Trust strip pinned to the fold */}
         <div className="relative border-t border-navy-900/10 bg-white/70">
           <p className="mx-auto max-w-7xl px-6 py-3.5 font-mono text-[10px] uppercase tracking-[0.22em] text-ink/50 sm:px-10">
             Companies · Banks & insurers · NGOs · Cooperatives · Startups · Public institutions
