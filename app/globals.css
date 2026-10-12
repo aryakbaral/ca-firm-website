@@ -19,6 +19,11 @@ body {
   color: #0a1826;
 }
 
+:focus-visible {
+  outline: 2px solid #a8893f;
+  outline-offset: 2px;
+}
+
 /* Soft entrance animation */
 @keyframes rise {
   from { opacity: 0; transform: translateY(18px); }
@@ -28,7 +33,7 @@ body {
   animation: rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-/* Faint ledger-paper grid */
+/* Faint ledger-paper grids */
 .ledger-grid {
   background-image:
     linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
@@ -36,6 +41,14 @@ body {
   background-size: 44px 44px;
   -webkit-mask-image: radial-gradient(ellipse 90% 70% at 65% 25%, black 35%, transparent 78%);
   mask-image: radial-gradient(ellipse 90% 70% at 65% 25%, black 35%, transparent 78%);
+}
+.ledger-grid-light {
+  background-image:
+    linear-gradient(rgba(10, 24, 38, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(10, 24, 38, 0.05) 1px, transparent 1px);
+  background-size: 44px 44px;
+  -webkit-mask-image: radial-gradient(ellipse 90% 70% at 30% 20%, black 30%, transparent 75%);
+  mask-image: radial-gradient(ellipse 90% 70% at 30% 20%, black 30%, transparent 75%);
 }
 
 @media (prefers-reduced-motion: reduce) {
