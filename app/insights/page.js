@@ -6,6 +6,7 @@ import { Button, Eyebrow } from "@/components/ui";
 import Reveal from "@/components/Reveal";
 
 export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
 export const metadata = {
   title: "Insights",
