@@ -1,5 +1,6 @@
 import { jobs } from "@/lib/jobs";
 import { site } from "@/lib/site";
+import ApplicationForm from "@/components/forms/ApplicationForm";
 import { Button, Eyebrow, SectionHeading } from "@/components/ui";
 import Reveal from "@/components/Reveal";
 
@@ -65,12 +66,16 @@ const programs = [
 ];
 
 const applySteps = [
-  "Email your CV and a one-page cover letter to the address below, with the position in the subject line.",
+  "Complete the application form and upload your CV — PDF, DOC or DOCX, maximum 5 MB.",
   "We acknowledge every application within two business days; shortlisted candidates receive a written brief before interviews.",
   "Interviews include a technical conversation and a file-review exercise. We never assign unpaid take-home work.",
 ];
 
-export default function CareersPage() {
+export default function CareersPage({ searchParams }) {
+  const jobSlug = searchParams?.job || "";
+  const selected = jobs.find((j) => j.slug === jobSlug);
+  const initialJob = selected ? selected.title : "";
+
   return (
     <>
       {/* Hero */}
@@ -89,7 +94,7 @@ export default function CareersPage() {
           <div className="mt-8 flex flex-wrap gap-4">
             <Button href="#openings">View open positions</Button>
             <Button href="#apply" variant="outline">
-              How to apply
+              Apply now
             </Button>
           </div>
         </div>
@@ -98,10 +103,7 @@ export default function CareersPage() {
       {/* Why people stay */}
       <section className="border-y border-navy-900/10 bg-white">
         <div className="mx-auto max-w-7xl px-6 py-20 sm:px-10 lg:py-24">
-          <SectionHeading
-            eyebrow="Why people stay"
-            title="Four promises we make to every hire."
-          />
+          <SectionHeading eyebrow="Why people stay" title="Four promises we make to every hire." />
           <div className="mt-12 grid gap-px border border-navy-900/10 bg-navy-900/10 md:grid-cols-2">
             {why.map((w, i) => (
               <Reveal key={w.no} delay={i * 80} className="bg-white">
@@ -174,13 +176,7 @@ export default function CareersPage() {
                     ))}
                   </ul>
                   <div className="mt-6">
-                    <Button
-                      href={`mailto:${site.email}?subject=${encodeURIComponent(
-                        `Application — ${job.title}`
-                      )}`}
-                      variant="gold"
-                      size="sm"
-                    >
+                    <Button href={`/careers?job=${job.slug}#apply`} variant="gold" size="sm">
                       Apply now
                     </Button>
                   </div>
@@ -193,17 +189,12 @@ export default function CareersPage() {
 
       {/* Programmes */}
       <section className="mx-auto max-w-7xl px-6 py-20 sm:px-10 lg:py-24">
-        <SectionHeading
-          eyebrow="Students & graduates"
-          title="Two structured doors into the profession."
-        />
+        <SectionHeading eyebrow="Students & graduates" title="Two structured doors into the profession." />
         <div className="mt-12 grid gap-8 lg:grid-cols-2">
           {programs.map((p, i) => (
             <Reveal key={p.title} delay={i * 100}>
               <div className="h-full border-l-2 border-gold-500 bg-paper p-8 sm:p-10">
-                <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-gold-700">
-                  {p.mono}
-                </p>
+                <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-gold-700">{p.mono}</p>
                 <h3 className="mt-3 font-display text-2xl text-navy-900">{p.title}</h3>
                 <p className="mt-4 text-sm leading-relaxed text-ink/75">{p.text}</p>
               </div>
@@ -212,71 +203,44 @@ export default function CareersPage() {
         </div>
       </section>
 
-      {/* How to apply */}
+      {/* Apply */}
       <section id="apply" className="border-t border-navy-900/10 bg-white">
-        <div className="mx-auto grid max-w-7xl gap-14 px-6 py-20 sm:px-10 lg:grid-cols-[1.1fr_0.9fr] lg:py-24">
-          <Reveal>
-            <SectionHeading eyebrow="How to apply" title="Three steps, no black holes." />
-            <ol className="mt-8 space-y-5">
-              {applySteps.map((s, i) => (
-                <li key={s} className="flex gap-4">
-                  <span className="font-mono text-xs text-gold-700">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <p className="max-w-xl text-sm leading-relaxed text-ink/75">{s}</p>
-                </li>
-              ))}
-            </ol>
-            <div className="mt-8">
-              <Button
-                href={`mailto:${site.email}?subject=${encodeURIComponent("Application")}`}
-              >
-                Email your application
-              </Button>
-            </div>
-          </Reveal>
-          <Reveal delay={120}>
-            <div className="h-full border-t-2 border-gold-500 bg-navy-900 p-8 sm:p-10">
-              <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-gold-400">
-                Secure online applications
-              </p>
-              <p className="mt-4 text-sm leading-relaxed text-white/75">
-                Our recruitment portal with encrypted CV upload opens with the client-portal
-                phase of this website. Until then, email applications are handled under our
-                recruitment privacy commitment: files are seen only by the hiring partner and
-                deleted at the close of the selection cycle.
-              </p>
-              <p className="mt-4 font-mono text-[10px] uppercase tracking-[0.2em] text-white/50">
-                {site.email}
-              </p>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* Closing */}
-      <section className="border-t border-navy-900/10 bg-paper">
-        <div className="mx-auto max-w-4xl px-6 py-20 text-center sm:px-10">
-          <Eyebrow>No matching role?</Eyebrow>
-          <h2 className="mt-4 font-display text-3xl leading-tight text-navy-900 sm:text-4xl">
-            We keep exceptional files on record.
-          </h2>
-          <p className="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-ink/70">
-            Send a speculative application and, if the standard is there, we will hold it for the
-            next opening in your field.
-          </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-4">
-            <Button
-              href={`mailto:${site.email}?subject=${encodeURIComponent(
-                "Speculative application"
-              )}`}
-            >
-              Send a speculative application
-            </Button>
-            <Button href="/contact" variant="outline">
-              Contact Our Team
-            </Button>
+        <div className="mx-auto grid max-w-7xl gap-14 px-6 py-20 sm:px-10 lg:grid-cols-[0.85fr_1.15fr] lg:py-24">
+          <div>
+            <Reveal>
+              <SectionHeading eyebrow="How to apply" title="Three steps, no black holes." />
+              <ol className="mt-8 space-y-5">
+                {applySteps.map((s, i) => (
+                  <li key={s} className="flex gap-4">
+                    <span className="font-mono text-xs text-gold-700">{String(i + 1).padStart(2, "0")}</span>
+                    <p className="max-w-xl text-sm leading-relaxed text-ink/75">{s}</p>
+                  </li>
+                ))}
+              </ol>
+            </Reveal>
+            <Reveal delay={120}>
+              <div className="mt-10 border-t-2 border-gold-500 bg-navy-900 p-8">
+                <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-gold-400">
+                  Your CV is protected
+                </p>
+                <p className="mt-4 text-sm leading-relaxed text-white/75">
+                  Uploads are encrypted in transit and stored in a private vault. Only the hiring
+                  partner can open them, and files are deleted at the close of the selection
+                  cycle unless you ask us to keep them. See the{" "}
+                  <a href="/legal/recruitment-privacy-notice" className="underline decoration-gold-500 underline-offset-4 hover:text-gold-300">
+                    Recruitment Privacy Notice
+                  </a>
+                  .
+                </p>
+                <p className="mt-4 font-mono text-[10px] uppercase tracking-[0.2em] text-white/50">
+                  Prefer email? {site.email}
+                </p>
+              </div>
+            </Reveal>
           </div>
+          <Reveal delay={80}>
+            <ApplicationForm initialJob={initialJob} />
+          </Reveal>
         </div>
       </section>
     </>
