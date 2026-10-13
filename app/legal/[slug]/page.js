@@ -3,9 +3,6 @@ import { notFound } from "next/navigation";
 import { site } from "@/lib/site";
 import { Eyebrow } from "@/components/ui";
 
-export const metadata = {
-  title: "Legal",
-};
 
 const pages = {
   "privacy-policy": {
