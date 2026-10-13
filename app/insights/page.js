@@ -34,7 +34,9 @@ async function getAllPosts() {
       .order("published_at", { ascending: false });
     if (!error && data) dbPosts = data;
   }
-  const seeds = seedPosts.filter((s) => !dbPosts.some((d) => d.slug === s.slug));
+    const seeds = seedPosts
+    .filter((s) => !dbPosts.some((d) => d.slug === s.slug))
+    .map((s) => ({ ...s, date_label: s.date_label || s.dateLabel }));
   return [...dbPosts, ...seeds];
 }
 
