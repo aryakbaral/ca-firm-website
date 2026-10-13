@@ -18,9 +18,7 @@ export default function ThankYouContact() {
           Thank you - your consultation is requested.
         </h1>
         <p className="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-ink/75">
-          Your enquiry is with the firm. A partner will respond within{" "}
-          <strong className="font-semibold text-navy-900">one business day</strong> — by your
-          preferred contact method.
+         Your request is with the firm. A partner will confirm your slot - in person, by phone or by video — within one business day.
         </p>
         <div className="mt-8 flex flex-wrap justify-center gap-4">
           <Button href="/services">View our services</Button>
