@@ -7,6 +7,7 @@ import { Button, Eyebrow } from "@/components/ui";
 import PostBody from "@/components/PostBody";
 
 export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
 async function getPost(slug) {
   if (supabase) {
@@ -31,7 +32,9 @@ async function getRelated(slug) {
       .order("published_at", { ascending: false });
     if (!error && data) dbPosts = data;
   }
-  const seeds = seedPosts.filter((s) => !dbPosts.some((d) => d.slug === s.slug));
+    const seeds = seedPosts
+    .filter((s) => !dbPosts.some((d) => d.slug === s.slug))
+    .map((s) => ({ ...s, date_label: s.date_label || s.dateLabel }));
   return [...dbPosts, ...seeds].filter((p) => p.slug !== slug).slice(0, 2);
 }
 
