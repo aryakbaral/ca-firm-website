@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { supabase } from "@/lib/supabase";
 import { site } from "@/lib/site";
 
 const inputCls =
@@ -9,7 +11,8 @@ const labelCls = "block font-mono text-[10px] uppercase tracking-[0.2em] text-in
 const errCls = "mt-1 text-xs text-[#b3261e]";
 
 export default function ContactForm() {
-  const [status, setStatus] = useState("idle");
+  const router = useRouter();
+  const [status, setStatus] = useState("idle"); // idle | sending | error
   const [errors, setErrors] = useState({});
 
   function validate(fd) {
@@ -23,31 +26,36 @@ export default function ContactForm() {
     return e;
   }
 
-  function handleSubmit(ev) {
+  async function handleSubmit(ev) {
     ev.preventDefault();
     const fd = new FormData(ev.currentTarget);
     if (fd.get("company_website")) return; // honeypot: silently drop bots
     const e = validate(fd);
     setErrors(e);
     if (Object.keys(e).length) return;
+    if (!supabase) {
+      setStatus("error");
+      return;
+    }
 
-    /* TODO (Step 11): replace this mailto hand-off with a Supabase insert
-       into the `contacts` table, then router.push("/thank-you/contact"). */
-    const subject = `Website enquiry — ${fd.get("service_needed")}`;
-    const body = [
-      `Name: ${fd.get("full_name")}`,
-      `Company: ${fd.get("company_name") || "—"}`,
-      `Email: ${fd.get("email")}`,
-      `Phone: ${fd.get("phone")}`,
-      `Service needed: ${fd.get("service_needed")}`,
-      `Preferred contact: ${fd.get("preferred_contact")}`,
-      "",
-      fd.get("message"),
-    ].join("\n");
-    window.location.href = `mailto:${site.email}?subject=${encodeURIComponent(
-      subject
-    )}&body=${encodeURIComponent(body)}`;
-    setStatus("sent");
+    setStatus("sending");
+    const { error } = await supabase.from("contacts").insert({
+      full_name: String(fd.get("full_name")).trim(),
+      company_name: String(fd.get("company_name") || "").trim() || null,
+      email: String(fd.get("email")).trim(),
+      phone: String(fd.get("phone")).trim(),
+      service_needed: String(fd.get("service_needed")),
+      preferred_contact_method: String(fd.get("preferred_contact")),
+      message: String(fd.get("message")).trim(),
+      consent_given: true,
+      status: "new",
+    });
+
+    if (error) {
+      setStatus("error");
+      return;
+    }
+    router.push("/thank-you/contact");
   }
 
   return (
@@ -56,15 +64,7 @@ export default function ContactForm() {
         Client enquiry form
       </p>
 
-      {/* Honeypot — hidden from humans */}
-      <input
-        type="text"
-        name="company_website"
-        tabIndex={-1}
-        autoComplete="off"
-        aria-hidden="true"
-        className="hidden"
-      />
+      <input type="text" name="company_website" tabIndex={-1} autoComplete="off" aria-hidden="true" className="hidden" />
 
       <div className="mt-6 grid gap-5 sm:grid-cols-2">
         <div>
@@ -89,10 +89,13 @@ export default function ContactForm() {
         <div className="sm:col-span-2">
           <label htmlFor="service_needed" className={labelCls}>Service needed *</label>
           <select id="service_needed" name="service_needed" className={`${inputCls} mt-2`} defaultValue="Audit & Assurance">
-            {site.services.map((s) => (
-              <option key={s.slug} value={s.title}>{s.title}</option>
-            ))}
-            <option value="Other">Other</option>
+            <option>Audit & Assurance</option>
+            <option>Taxation</option>
+            <option>Accounting & Bookkeeping</option>
+            <option>Business Advisory & Consulting</option>
+            <option>Corporate Services</option>
+            <option>Payroll & HR Advisory</option>
+            <option>Other</option>
           </select>
         </div>
         <fieldset className="sm:col-span-2">
@@ -100,13 +103,7 @@ export default function ContactForm() {
           <div className="mt-3 flex flex-wrap gap-6">
             {["Email", "Phone call", "WhatsApp"].map((m, i) => (
               <label key={m} className="flex items-center gap-2 text-sm text-ink/80">
-                <input
-                  type="radio"
-                  name="preferred_contact"
-                  value={m}
-                  defaultChecked={i === 0}
-                  className="h-4 w-4 accent-[#a8893f]"
-                />
+                <input type="radio" name="preferred_contact" value={m} defaultChecked={i === 0} className="h-4 w-4 accent-[#a8893f]" />
                 {m}
               </label>
             ))}
@@ -135,16 +132,16 @@ export default function ContactForm() {
 
       <button
         type="submit"
-        className="mt-7 inline-flex items-center justify-center bg-navy-900 px-6 py-3 font-mono text-[11px] uppercase tracking-[0.22em] text-white transition-colors hover:bg-navy-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-600"
+        disabled={status === "sending"}
+        className="mt-7 inline-flex items-center justify-center bg-navy-900 px-6 py-3 font-mono text-[11px] uppercase tracking-[0.22em] text-white transition-colors hover:bg-navy-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-600 disabled:opacity-60"
       >
-        Send enquiry
+        {status === "sending" ? "Sending…" : "Send enquiry"}
       </button>
 
-      {status === "sent" && (
-        <div className="mt-6 border border-forest-500/40 bg-forest-500/10 p-4 text-sm leading-relaxed text-forest-700">
-          Your email application should now be open with this enquiry addressed to {site.email} —
-          press send there. (Until our secure client portal goes live, this is how website
-          enquiries reach the firm.) We reply within one business day.
+      {status === "error" && (
+        <div className="mt-6 border border-[#b3261e]/40 bg-[#b3261e]/10 p-4 text-sm leading-relaxed text-[#b3261e]">
+          Something went wrong sending your enquiry. Please try again, or email us directly at{" "}
+          {site.email}.
         </div>
       )}
     </form>
