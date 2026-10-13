@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { supabase } from "@/lib/supabase";
 import { site } from "@/lib/site";
 
 const inputCls =
@@ -9,6 +11,7 @@ const labelCls = "block font-mono text-[10px] uppercase tracking-[0.2em] text-in
 const errCls = "mt-1 text-xs text-[#b3261e]";
 
 export default function ConsultationForm({ initialService = "" }) {
+  const router = useRouter();
   const [status, setStatus] = useState("idle");
   const [errors, setErrors] = useState({});
 
@@ -23,33 +26,37 @@ export default function ConsultationForm({ initialService = "" }) {
     return e;
   }
 
-  function handleSubmit(ev) {
+  async function handleSubmit(ev) {
     ev.preventDefault();
     const fd = new FormData(ev.currentTarget);
-    if (fd.get("company_website")) return; // honeypot
+    if (fd.get("company_website")) return;
     const e = validate(fd);
     setErrors(e);
     if (Object.keys(e).length) return;
+    if (!supabase) {
+      setStatus("error");
+      return;
+    }
 
-    /* TODO (Step 11): replace this mailto hand-off with a Supabase insert
-       into `consultation_requests`, then router.push("/thank-you/consultation"). */
-    const subject = `Consultation request — ${fd.get("service_needed")}`;
-    const body = [
-      `Name: ${fd.get("full_name")}`,
-      `Company: ${fd.get("company_name") || "—"}`,
-      `Email: ${fd.get("email")}`,
-      `Phone: ${fd.get("phone")}`,
-      `Consultation type: ${fd.get("consultation_type")}`,
-      `Preferred date: ${fd.get("preferred_date")}`,
-      `Preferred time: ${fd.get("preferred_time")}`,
-      `Service needed: ${fd.get("service_needed")}`,
-      "",
-      fd.get("message") || "(no additional notes)",
-    ].join("\n");
-    window.location.href = `mailto:${site.email}?subject=${encodeURIComponent(
-      subject
-    )}&body=${encodeURIComponent(body)}`;
-    setStatus("sent");
+    setStatus("sending");
+    const { error } = await supabase.from("consultation_requests").insert({
+      full_name: String(fd.get("full_name")).trim(),
+      company_name: String(fd.get("company_name") || "").trim() || null,
+      email: String(fd.get("email")).trim(),
+      phone: String(fd.get("phone")).trim(),
+      consultation_type: String(fd.get("consultation_type")),
+      preferred_date: String(fd.get("preferred_date")),
+      preferred_time: String(fd.get("preferred_time")),
+      service_needed: String(fd.get("service_needed")),
+      message: String(fd.get("message") || "").trim() || null,
+      status: "new",
+    });
+
+    if (error) {
+      setStatus("error");
+      return;
+    }
+    router.push("/thank-you/consultation");
   }
 
   return (
@@ -110,10 +117,13 @@ export default function ConsultationForm({ initialService = "" }) {
         <div className="sm:col-span-2">
           <label htmlFor="service_needed" className={labelCls}>Service needed *</label>
           <select id="service_needed" name="service_needed" className={`${inputCls} mt-2`} defaultValue={initialService || "Audit & Assurance"}>
-            {site.services.map((s) => (
-              <option key={s.slug} value={s.title}>{s.title}</option>
-            ))}
-            <option value="Other">Other / not sure yet</option>
+            <option>Audit & Assurance</option>
+            <option>Taxation</option>
+            <option>Accounting & Bookkeeping</option>
+            <option>Business Advisory & Consulting</option>
+            <option>Corporate Services</option>
+            <option>Payroll & HR Advisory</option>
+            <option>Other / not sure yet</option>
           </select>
         </div>
 
@@ -123,9 +133,9 @@ export default function ConsultationForm({ initialService = "" }) {
         </div>
 
         <div className="sm:col-span-2 border border-navy-900/10 bg-paper p-4 text-sm leading-relaxed text-ink/70">
-          <span className="font-semibold text-navy-900">Documents?</span> Encrypted upload arrives
-          with the client portal. For now, simply attach any documents to the email that opens
-          after you submit — nothing is uploaded from this page today.
+          <span className="font-semibold text-navy-900">Documents?</span> Bring them to the
+          meeting, or email them to {site.email} quoting your name — encrypted upload arrives
+          with the client portal.
         </div>
 
         <div className="sm:col-span-2">
@@ -146,16 +156,16 @@ export default function ConsultationForm({ initialService = "" }) {
 
       <button
         type="submit"
-        className="mt-7 inline-flex items-center justify-center bg-gold-500 px-6 py-3 font-mono text-[11px] uppercase tracking-[0.22em] text-navy-950 transition-colors hover:bg-gold-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-600"
+        disabled={status === "sending"}
+        className="mt-7 inline-flex items-center justify-center bg-gold-500 px-6 py-3 font-mono text-[11px] uppercase tracking-[0.22em] text-navy-950 transition-colors hover:bg-gold-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-600 disabled:opacity-60"
       >
-        Request consultation
+        {status === "sending" ? "Sending…" : "Request consultation"}
       </button>
 
-      {status === "sent" && (
-        <div className="mt-6 border border-forest-500/40 bg-forest-500/10 p-4 text-sm leading-relaxed text-forest-700">
-          Your email application should now be open with this request addressed to {site.email} —
-          press send there, attaching any documents you mentioned. A partner confirms your slot
-          within one business day.
+      {status === "error" && (
+        <div className="mt-6 border border-[#b3261e]/40 bg-[#b3261e]/10 p-4 text-sm leading-relaxed text-[#b3261e]">
+          Something went wrong sending your request. Please try again, or email us directly at{" "}
+          {site.email}.
         </div>
       )}
     </form>
