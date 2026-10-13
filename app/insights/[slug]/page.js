@@ -1,50 +1,50 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { posts } from "@/lib/posts";
+import { posts as seedPosts } from "@/lib/posts";
+import { supabase } from "@/lib/supabase";
 import { site } from "@/lib/site";
 import { Button, Eyebrow } from "@/components/ui";
+import PostBody from "@/components/PostBody";
 
-export function generateStaticParams() {
-  return posts.map((p) => ({ slug: p.slug }));
+export const dynamic = "force-dynamic";
+
+async function getPost(slug) {
+  if (supabase) {
+    const { data, error } = await supabase
+      .from("blog_posts")
+      .select("*")
+      .eq("slug", slug)
+      .eq("status", "published")
+      .maybeSingle();
+    if (!error && data) return data;
+  }
+  return seedPosts.find((p) => p.slug === slug) || null;
 }
 
-export function generateMetadata({ params }) {
-  const post = posts.find((p) => p.slug === params.slug);
+async function getRelated(slug) {
+  let dbPosts = [];
+  if (supabase) {
+    const { data, error } = await supabase
+      .from("blog_posts")
+      .select("slug, title, category, date_label, excerpt")
+      .eq("status", "published")
+      .order("published_at", { ascending: false });
+    if (!error && data) dbPosts = data;
+  }
+  const seeds = seedPosts.filter((s) => !dbPosts.some((d) => d.slug === s.slug));
+  return [...dbPosts, ...seeds].filter((p) => p.slug !== slug).slice(0, 2);
+}
+
+export async function generateMetadata({ params }) {
+  const post = await getPost(params.slug);
   if (!post) return { title: "Insight" };
   return { title: post.title, description: post.excerpt };
 }
 
-function Block({ block }) {
-  switch (block.type) {
-    case "h2":
-      return <h2 className="mt-10 font-display text-2xl leading-snug text-navy-900">{block.text}</h2>;
-    case "ul":
-      return (
-        <ul className="mt-5 space-y-2">
-          {block.items.map((item) => (
-            <li key={item} className="flex gap-3 leading-relaxed text-ink/80">
-              <span className="mt-3 h-px w-4 shrink-0 bg-gold-500" />
-              {item}
-            </li>
-          ))}
-        </ul>
-      );
-    case "quote":
-      return (
-        <blockquote className="mt-8 border-l-2 border-gold-500 pl-6 font-display text-xl italic leading-snug text-navy-900">
-          {block.text}
-        </blockquote>
-      );
-    default:
-      return <p className="mt-5 leading-relaxed text-ink/80">{block.text}</p>;
-  }
-}
-
-export default function PostPage({ params }) {
-  const index = posts.findIndex((p) => p.slug === params.slug);
-  const post = posts[index];
+export default async function PostPage({ params }) {
+  const post = await getPost(params.slug);
   if (!post) notFound();
-  const related = posts.filter((p) => p.slug !== post.slug).slice(0, 2);
+  const related = await getRelated(params.slug);
 
   return (
     <>
@@ -65,7 +65,7 @@ export default function PostPage({ params }) {
             {post.title}
           </h1>
           <p className="mt-5 font-mono text-[10px] uppercase tracking-[0.2em] text-ink/50">
-            {post.author} · {post.dateLabel} · {post.readTime}
+            {post.author} · {post.date_label} · {post.read_time}
           </p>
         </div>
       </section>
@@ -73,9 +73,7 @@ export default function PostPage({ params }) {
       {/* Body */}
       <section className="border-t border-navy-900/10 bg-white">
         <div className="mx-auto max-w-3xl px-6 py-14 sm:px-10 lg:py-16">
-          {post.content.map((block, i) => (
-            <Block key={i} block={block} />
-          ))}
+          <PostBody post={post} />
           <div className="mt-12 border-t border-navy-900/10 pt-6">
             <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink/50">
               Prepared by
@@ -111,7 +109,7 @@ export default function PostPage({ params }) {
                 className="group border-t-2 border-gold-500 bg-white p-7 transition-colors hover:bg-mist"
               >
                 <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-gold-700">
-                  {p.category} · {p.dateLabel}
+                  {p.category} · {p.date_label}
                 </p>
                 <h3 className="mt-3 font-display text-xl leading-snug text-navy-900 transition-colors group-hover:text-gold-700">
                   {p.title}
