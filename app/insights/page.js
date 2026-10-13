@@ -1,8 +1,11 @@
 import Link from "next/link";
-import { posts, postCategories } from "@/lib/posts";
+import { posts as seedPosts, postCategories } from "@/lib/posts";
+import { supabase } from "@/lib/supabase";
 import { site } from "@/lib/site";
 import { Button, Eyebrow } from "@/components/ui";
 import Reveal from "@/components/Reveal";
+
+export const dynamic = "force-dynamic";
 
 export const metadata = {
   title: "Insights",
@@ -20,9 +23,24 @@ function chip(isActive) {
   }`;
 }
 
-export default function InsightsPage({ searchParams }) {
+async function getAllPosts() {
+  let dbPosts = [];
+  if (supabase) {
+    const { data, error } = await supabase
+      .from("blog_posts")
+      .select("*")
+      .eq("status", "published")
+      .order("published_at", { ascending: false });
+    if (!error && data) dbPosts = data;
+  }
+  const seeds = seedPosts.filter((s) => !dbPosts.some((d) => d.slug === s.slug));
+  return [...dbPosts, ...seeds];
+}
+
+export default async function InsightsPage({ searchParams }) {
   const active = searchParams?.category || null;
-  const list = active ? posts.filter((p) => catSlug(p.category) === active) : posts;
+  const all = await getAllPosts();
+  const list = active ? all.filter((p) => catSlug(p.category) === active) : all;
   const [lead, ...rest] = list;
 
   return (
@@ -71,7 +89,7 @@ export default function InsightsPage({ searchParams }) {
                 >
                   <div>
                     <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-gold-700">
-                      {lead.category} · {lead.dateLabel}
+                      {lead.category} · {lead.date_label}
                     </p>
                     <h2 className="mt-4 max-w-3xl font-display text-3xl leading-tight text-navy-900 transition-colors group-hover:text-gold-700 sm:text-4xl">
                       {lead.title}
@@ -92,7 +110,7 @@ export default function InsightsPage({ searchParams }) {
                       className="group grid gap-3 border-b border-navy-900/10 py-6 transition-colors hover:bg-white md:grid-cols-[11rem_1fr_auto] md:items-baseline md:px-4"
                     >
                       <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-ink/50">
-                        {p.category} · {p.dateLabel}
+                        {p.category} · {p.date_label}
                       </span>
                       <span>
                         <span className="block font-display text-xl text-navy-900 transition-colors group-hover:text-gold-700">
@@ -103,7 +121,7 @@ export default function InsightsPage({ searchParams }) {
                         </span>
                       </span>
                       <span className="hidden font-mono text-[10px] uppercase tracking-[0.2em] text-ink/40 transition-colors group-hover:text-gold-700 md:block">
-                        {p.readTime}
+                        {p.read_time}
                       </span>
                     </Link>
                   </Reveal>
