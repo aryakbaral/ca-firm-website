@@ -4,11 +4,12 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { supabase } from "@/lib/supabase";
 
-const tabs = [
+const tabs =  [
   { href: "/admin", label: "Overview" },
   { href: "/admin/leads", label: "Leads & consultations" },
   { href: "/admin/applications", label: "Applications" },
   { href: "/admin/subscribers", label: "Subscribers" },
+  { href: "/admin/insights", label: "Insights CMS" },
 ];
 
 export default function AdminShell({ active, title, children }) {
