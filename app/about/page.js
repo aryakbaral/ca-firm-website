@@ -1,7 +1,7 @@
 import { site } from "@/lib/site";
 import { Button, Eyebrow, SectionHeading } from "@/components/ui";
 import Reveal from "@/components/Reveal";
-import Skyline from "@/components/Skyline";
+
 
 export const metadata = {
   title: "About Us",
@@ -326,7 +326,7 @@ export default function AboutPage() {
       {/* ============ ETHICS BAND ============ */}
       <section className="relative overflow-hidden bg-navy-950">
         <div aria-hidden="true" className="ledger-grid absolute inset-0" />
-        <Skyline className="text-gold-400/10" />
+        
         <div className="relative mx-auto max-w-7xl px-6 py-20 sm:px-10 lg:py-24">
           <div className="max-w-3xl">
             <Eyebrow onDark>Ethics · Independence · Confidentiality</Eyebrow>
