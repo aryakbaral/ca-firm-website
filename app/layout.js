@@ -48,6 +48,13 @@ export const metadata = {
     title: `${site.name} — ${site.descriptor}`,
     description: site.tagline,
     type: "website",
+    locale: "en_US",
+    siteName: site.name,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${site.name} — ${site.descriptor}`,
+    description: site.tagline,
   },
 };
 
@@ -64,7 +71,42 @@ export default function RootLayout({ children }) {
         <Header />
         <main id="main">{children}</main>
         <Footer />
-      </body>
+            <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": ["AccountingService", "ProfessionalService"],
+            name: site.name,
+            description: site.tagline,
+            url: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
+            telephone: site.phoneHref,
+            email: site.email,
+            address: {
+              "@type": "PostalAddress",
+              addressLocality: "Lalitpur",
+              addressCountry: "NP",
+            },
+            openingHoursSpecification: {
+              "@type": "OpeningHoursSpecification",
+              dayOfWeek: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+              opens: "09:00",
+              closes: "17:30",
+            },
+            knowsAbout: [
+              "Statutory Audit",
+              "Internal Audit",
+              "Corporate Tax",
+              "VAT Compliance",
+              "Bookkeeping",
+              "Payroll",
+              "Company Secretarial",
+              "Business Advisory",
+            ],
+          }),
+        }}
+      />
+        </body>
     </html>
   );
 }
