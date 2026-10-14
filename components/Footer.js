@@ -1,10 +1,14 @@
 import Link from "next/link";
 import { site } from "@/lib/site";
+import Skyline from "@/components/Skyline";
 
 export default function Footer() {
   const year = new Date().getFullYear();
   return (
     <footer className="bg-navy-950 text-white">
+          <div className="relative h-20 overflow-hidden sm:h-24">
+        <Skyline className="text-gold-400/10" />
+      </div>
       <div className="mx-auto grid max-w-7xl gap-12 px-6 py-16 sm:px-10 lg:grid-cols-[1.3fr_1fr_1fr_1.1fr]">
         <div>
           <div className="flex items-center gap-3">
