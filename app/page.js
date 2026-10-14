@@ -3,6 +3,7 @@ import { site } from "@/lib/site";
 import { Button, Eyebrow, SectionHeading } from "@/components/ui";
 import Reveal from "@/components/Reveal";
 import CountUp from "@/components/CountUp";
+import Skyline from "@/components/Skyline";
 
 const stats = [
   { value: 15, suffix: "+", label: "Years of practice" },
@@ -253,6 +254,7 @@ export default function Home() {
       {/* ============ STATS BAND ============ */}
       <section className="relative overflow-hidden bg-navy-950">
         <div aria-hidden="true" className="ledger-grid absolute inset-0" />
+        <Skyline className="text-gold-400/10" />
         <div className="relative mx-auto max-w-7xl px-6 py-16 sm:px-10 lg:py-20">
           <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-5">
             {stats.map((s, i) => (
@@ -428,6 +430,7 @@ export default function Home() {
       {/* ============ CONTACT / CTA BAND ============ */}
       <section className="relative overflow-hidden bg-navy-950">
         <div aria-hidden="true" className="ledger-grid absolute inset-0" />
+        <Skyline className="text-white/10" />
         <div className="relative mx-auto max-w-7xl px-6 py-20 sm:px-10 lg:py-24">
           <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr]">
             <Reveal>
