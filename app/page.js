@@ -47,9 +47,9 @@ const promises = [
 ];
 
 const credentials = [
-  { label: "Regulated by", value: "ICAN" },
-  { label: "Standards", value: "NSA · NFRS / IFRS" },
-  { label: "Response", value: "One business day" },
+  { label: "Member Firm Of", value: "ICAN" },
+  { label: "Works Performed Under", value: "NSA · NFRS / IFRS" },
+  { label: "Response", value: "Enquiries answered within one business day" },
 ];
 
 const principles = ["Partner-signed reports", "Documented working papers", "Two-level review, minimum"];
