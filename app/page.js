@@ -135,14 +135,16 @@ export default function Home() {
               {site.descriptor} · {site.city}
             </Eyebrow>
             <h1 className="mt-5 font-display text-4xl leading-[1.05] text-navy-900 sm:text-5xl lg:text-[3.3rem]">
-              <em className="italic text-gold-600">Trusted</em> audit, tax and advisory services.
+            <em className="italic text-gold-600">Building</em> trust. Enabling growth.
             </h1>
             <p className="mt-5 max-w-xl text-base leading-relaxed text-ink/75 sm:text-lg">
-              Chartered Accountants in Lalitpur serving businesses and institutions — assurance,
-              compliance and growth-oriented counsel, delivered with independence and complete
-              confidentiality.
+              Baral & K.C. Associates is a firm of Chartered Accountants providing audit, tax and advisory services 
+              to businesses, financial institutions, development organisations and public bodies across Nepal.
+              We combine technical rigour with practical insight to help clients meet their obligations with
+              confidence and make better-informed decisions.
             </p>
-            <div className="mt-8 flex flex-wrap items-center gap-4">
+      
+              <div className="mt-8 flex flex-wrap items-center gap-4">
               <Button href="/consultation">Request a Consultation</Button>
               <Button href="/services" variant="outline">
                 Explore Our Services
