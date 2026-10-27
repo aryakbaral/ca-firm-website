@@ -135,7 +135,8 @@ export default function Home() {
               {site.descriptor} · {site.city}
             </Eyebrow>
             <h1 className="mt-5 font-display text-4xl leading-[1.05] text-navy-900 sm:text-5xl lg:text-[3.3rem]">
-            <em className="italic text-gold-600">Building</em> trust. Enabling growth.
+            <em className="italic text-gold-600">Building</em> trust. 
+              Enabling growth.
             </h1>
             <p className="mt-5 max-w-xl text-base leading-relaxed text-ink/75 sm:text-lg">
               Baral & K.C. Associates is a firm of Chartered Accountants providing audit, tax and advisory services 
