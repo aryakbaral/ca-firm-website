@@ -154,7 +154,7 @@ export default function Home() {
                 href="/contact"
                 className="font-mono text-[11px] uppercase tracking-[0.22em] text-navy-900 underline decoration-gold-500 underline-offset-8 transition-colors hover:text-gold-700"
               >
-                Contact our team →
+                Contact Us →
               </Link>
             </div>
             <dl className="mt-10 grid max-w-md grid-cols-3 gap-6 border-t border-navy-900/10 pt-6">
