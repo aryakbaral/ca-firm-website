@@ -29,8 +29,8 @@ export default function Header() {
       {/* Utility bar */}
       <div className="bg-navy-950 text-white/85">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-6 py-2 font-mono text-[10px] uppercase tracking-[0.18em] sm:px-10">
-          <p className="truncate">
-            {site.descriptor} · {site.city}
+           <p className="truncate">
+            {site.descriptor} | Audit · Tax · Advisory | {site.city}
           </p>
           <div className="hidden gap-6 sm:flex">
             <a href={`tel:${site.phoneHref}`} className="transition-colors hover:text-gold-300">
@@ -128,7 +128,7 @@ export default function Header() {
               )
             )}
             <Button href="/consultation" variant="gold" size="sm">
-              Request Consultation
+              Request a Consultation
             </Button>
           </nav>
 
