@@ -27,11 +27,11 @@ const mono = IBM_Plex_Mono({
 export const metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"),
   title: {
-    default: `${site.name} — ${site.descriptor} in Lalitpur | Audit, Tax & Advisory`,
+        default: `${site.name} | ${site.descriptor} in Nepal | Audit, Tax & Advisory`,
     template: `%s | ${site.name}`,
   },
-  description:
-    "Baral & K.C. Associates is a firm of Chartered Accountants in Lalitpur, Nepal, providing audit & assurance, taxation, accounting & bookkeeping, payroll, corporate secretarial and business advisory services to companies, NGOs, startups and individuals.",
+    description:
+    "Baral & K.C. Associates is a Chartered Accountancy firm in Lalitpur, Nepal, providing audit and assurance, tax, accounting, advisory, corporate secretarial and payroll services to businesses, financial institutions, development organisations and individuals.",
   keywords: [
     "Chartered Accountants",
     "Audit firm",
