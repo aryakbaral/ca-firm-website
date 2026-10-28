@@ -47,9 +47,12 @@ export default function Header() {
       <div className="border-b border-navy-900/10 bg-paper/95 backdrop-blur">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 sm:px-10">
           <Link href="/" className="flex items-center gap-3">
-            <span className="grid h-11 w-11 place-items-center border border-gold-600/60 bg-navy-900 font-display text-sm text-gold-300">
-              {site.monogram}
-            </span>
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/logo-mark.png"
+              alt=""
+              className="h-11 w-11 rounded-full object-cover"
+            />
             <span>
               <span className="block font-display text-lg leading-tight text-navy-900">
                 {site.name}
