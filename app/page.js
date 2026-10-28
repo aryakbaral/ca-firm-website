@@ -195,7 +195,7 @@ export default function Home() {
             </ul>
             <div className="mt-4 flex items-center justify-between border-t border-navy-900/10 pt-4">
               <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-ink/50">
-                Partner line
+                Direct line
               </span>
               <a
                 href={`tel:${site.phoneHref}`}
@@ -210,7 +210,7 @@ export default function Home() {
         {/* Trust strip pinned to the fold */}
         <div className="relative border-t border-navy-900/10 bg-white/70">
           <p className="mx-auto max-w-7xl px-6 py-3.5 font-mono text-[10px] uppercase tracking-[0.22em] text-ink/50 sm:px-10">
-            Companies · Banks & insurers · NGOs · Cooperatives · Startups · Public institutions
+            Corporates · Banks & insurers · Development Organization · Cooperatives · Startups · Public institutions
           </p>
         </div>
       </section>
@@ -220,21 +220,20 @@ export default function Home() {
         <div className="mx-auto grid max-w-7xl gap-14 px-6 py-20 sm:px-10 lg:grid-cols-2 lg:py-24">
           <Reveal>
             <SectionHeading
-              eyebrow="The firm"
-              title="A practice built on independence and evidence."
-              intro="Founded in Lalitpur, Baral & K.C. Associates serves owners, boards and finance teams who need their numbers to withstand scrutiny — from the Inland Revenue Department to donors, lenders and regulators."
+              eyebrow="About Us"
+              title="Independent perspective. Evidence-based assurance."
+              intro="Since 2021, Baral & K.C. Associates has supported owners, boards and finance leaders who require financial information that stands up to scrutiny - from tax authorities and regulators to lenders, investors and development partners."
             />
             <div className="mt-8">
               <Button href="/about" variant="outline">
-                About the firm
+                Learn More About the firm
               </Button>
             </div>
           </Reveal>
           <Reveal delay={120}>
             <figure className="border-l-2 border-gold-500 bg-paper p-8 sm:p-10">
               <blockquote className="font-display text-2xl leading-snug text-navy-900 sm:text-[1.7rem]">
-                “An audit is not a ritual. It is the reason your stakeholders can act without
-                doubt.”
+                “Our purpose is to strengthen confidence in financial information, so that our clients and their stakeholders can make decisions with assurance.”
               </blockquote>
               <figcaption className="mt-6 font-mono text-[11px] uppercase tracking-[0.24em] text-ink/55">
                 Engagement philosophy · {site.name}
