@@ -40,10 +40,10 @@ const industries = [
 ];
 
 const promises = [
-  { title: "Independence", text: "Objective opinions, free of conflicts — always." },
-  { title: "Confidentiality", text: "Engagement data stays within our controlled systems." },
-  { title: "Rigour", text: "Every conclusion documented, reviewed and standards-based." },
-  { title: "Responsiveness", text: "A partner replies within one business day." },
+  { title: "Independence", text: "Objective judgement, free from conflicts of interest." },
+  { title: "Confidentiality", text: "Client information is protected through controlled access and strict professional discipline." },
+  { title: "Rigour", text: "Every conclusion is evidenced, reviewed and grounded in applicable standards." },
+  { title: "Responsiveness", text: "Senior-level attention, with every enquiry answered within one business day." },
 ];
 
 const credentials = [
@@ -171,7 +171,7 @@ export default function Home() {
 
           <aside className="flex h-full flex-col border-t-2 border-gold-500 bg-white p-6 shadow-lg shadow-navy-900/5 sm:p-7">
             <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-ink/50">
-              The firm&apos;s promise
+              Our Commitments
             </p>
             <ul className="mt-3 flex-1 divide-y divide-navy-900/10">
               {promises.map((p) => (
