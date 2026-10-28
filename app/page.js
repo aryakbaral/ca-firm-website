@@ -26,17 +26,18 @@ const industries = [
   "Banking & financial services",
   "Insurance",
   "Manufacturing",
-  "Retail & distribution",
+  "Consumer & Retail",
   "Real estate & construction",
   "Healthcare",
   "Education",
-  "NGOs & donor-funded organisations",
-  "Public sector",
+  "Development Sector & NGOs",
+  "Government & Public sector",
   "Technology & startups",
-  "Hospitality",
+  "Hospitality & Tourism",
   "Logistics & transport",
   "Professional services",
   "Energy & hydropower",
+  
 ];
 
 const promises = [
@@ -58,22 +59,22 @@ const whyUs = [
   {
     no: "01",
     title: "Partner-led engagements",
-    text: "A Chartered Accountant partner signs and stays accountable for your file from planning to final report — no silent hand-offs to juniors.",
+    text: "A Chartered Accountant partner leads every engagement from planning to final report, ensuring continuity, accountability and senior-level judgement throughout.",
   },
   {
     no: "02",
-    title: "Evidence, not opinion",
-    text: "Our working papers, checklists and review notes follow Nepal Standards on Auditing and NFRS/IFRS practice, so every figure we stand behind can be traced.",
+    title: "Quality You can Rely On",
+    text: "Our methodology follows Nepal Standards on Auditing and NFRS/IFRS, with every conclusion documented, reviewed and traceable to evidence.",
   },
   {
     no: "03",
-    title: "Deadlines treated as commitments",
-    text: "A statutory calendar is mapped per client at onboarding; filings are tracked, reminded and completed ahead of due dates.",
+    title: "Timely Delivery",
+    text: "We establish a statutory compliance calendar for every client at onboarding and track each obligation through to completion, well ahead of due dates.",
   },
   {
     no: "04",
-    title: "Advice you can act on",
-    text: "We write in plain language with costs, risks and options quantified — memos your board can decide from, not academic essays.",
+    title: "Practical, Actionable Insight",
+    text: "Our advice is clear and concise, with costs, risks and options set out so that boards and management can act with confidence.",
   },
 ];
 
@@ -371,9 +372,9 @@ export default function Home() {
       <section className="border-y border-navy-900/10 bg-paper">
         <div className="mx-auto max-w-7xl px-6 py-20 sm:px-10 lg:py-24">
           <SectionHeading
-            eyebrow="Client words"
+            eyebrow="Client Perspectives"
             title="Confidence, in their words."
-            intro="Names withheld under our confidentiality policy; role and sector shown with permission."
+            intro="Client names are withheld in line with our confidentiality obligations; roles and sectors are shown with permission."
           />
           <div className="mt-12 grid gap-8 lg:grid-cols-3">
             {testimonials.map((t, i) => (
@@ -401,7 +402,7 @@ export default function Home() {
       {/* ============ INSIGHTS PREVIEW ============ */}
       <section className="mx-auto max-w-7xl px-6 py-20 sm:px-10 lg:py-24">
         <div className="flex flex-wrap items-end justify-between gap-6">
-          <SectionHeading eyebrow="Knowledge hub" title="Updates worth your attention." />
+          <SectionHeading eyebrow="Insights" title="Latest Insights and Regulatory Updates." />
           <Button href="/insights" variant="outline">
             All insights
           </Button>
@@ -436,20 +437,19 @@ export default function Home() {
         <div className="relative mx-auto max-w-7xl px-6 py-20 sm:px-10 lg:py-24">
           <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr]">
             <Reveal>
-              <Eyebrow onDark>Begin the conversation</Eyebrow>
+              <Eyebrow onDark>Get in Touch</Eyebrow>
               <h2 className="mt-4 font-display text-3xl leading-tight text-white sm:text-4xl">
-                Speak to a partner — not a call centre.
+                How can we help?
               </h2>
               <p className="mt-5 max-w-lg text-lg leading-relaxed text-white/70">
-                Tell us what you need assured, filed, fixed or planned. We respond within one
-                business day, in confidence.
+               Whether you require an audit, tax support or advice on a specific business decision, our team is ready to help. Contact us and a member of our senior team will respond within one business day.
               </p>
               <div className="mt-8 flex flex-wrap gap-4">
                 <Button href="/consultation" variant="gold">
                   Request a Consultation
                 </Button>
                 <Button href="/contact" variant="light">
-                  Contact Our Team
+                  Contact Us
                 </Button>
               </div>
             </Reveal>
