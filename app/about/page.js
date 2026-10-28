@@ -143,46 +143,46 @@ const leadership = [
 const ethics = [
   {
     title: "Independence",
-    text: "We accept no engagement where a conflict, financial interest or relationship could colour our opinion. Where independence cannot be maintained, we decline — in writing, with reasons.",
+    text: "We do not accept engagements where a conflict of interest, financial interest or relationship could impair our objectivity. Where independence cannot be maintained, we formally decline the engagement.",
   },
   {
     title: "Confidentiality",
-    text: "Client information is held under engagement-level access control. Files, working papers and correspondence leave this office only with partner approval, or where the law compels it.",
+    text: "Client information is protected by engagement-level access controls. Files, working papers and correspondence are released only with client authorisation or where required by law.",
   },
   {
     title: "Professional ethics",
-    text: "Our work follows the ICAN Code of Ethics, Nepal Standards on Auditing and applicable NFRS/IFRS. Every professional signs an annual independence declaration and completes CPD hours.",
+    text: "Our work is performed in accordance with the ICAN Code of Ethics, Nepal Standards on Auditing and applicable NFRS/IFRS. All professionals complete an annual independence declaration and mandatory continuing professional development.",
   },
 ];
 
 const memberships = [
-  "Institute of Chartered Accountants of Nepal (ICAN) — member firm",
-  "IRD-registered tax practitioners",
-  "Nepal Standards on Auditing (NSA) practice",
-  "NFRS / IFRS reporting competence",
-  "Quarterly continuing professional development (CPD)",
+  "Registered with the Institute of Chartered Accountants of Nepal (ICAN)",
+  "VAT registered tax practitioners",
+  "Engagements performed under Nepal Standards on Auditing (NSA)",
+  "Financial reporting under NFRS / IFRS",
+  "Structured continuing professional development programme",
 ];
 
 const approach = [
   {
     step: "Step 1",
     title: "Understand",
-    text: "A partner interviews your finance lead, reads last year's file and maps your statutory calendar before we quote a fee.",
+    text: "We begin by understanding your organisation, its reporting obligations and its priorities before we propose a scope and fee.",
   },
   {
     step: "Step 2",
     title: "Plan",
-    text: "Scope, timing, team and materiality are set in writing; you receive an engagement letter and a fieldwork calendar.",
+    text: "Scope, timing, team and key milestones are agreed in writing through a formal engagement letter.",
   },
   {
     step: "Step 3",
     title: "Execute & review",
-    text: "Fieldwork runs on NSA checklists; a second reviewer challenges every judgement before anything reaches your desk.",
+    text: "Work is performed under our documented methodology and independently reviewed before any output is issued.",
   },
   {
     step: "Step 4",
     title: "Report & advise",
-    text: "Findings arrive as a ranked management letter plus a plain-language board summary — and we stay for the fixes.",
+    text: "We present clear, prioritised findings and recommendations, and continue to support you through implementation.",
   },
 ];
 
@@ -345,10 +345,10 @@ export default function AboutPage() {
           </div>
           <figure className="mt-14 border-l-2 border-gold-500 pl-6">
             <blockquote className="font-display text-2xl italic leading-snug text-white sm:text-3xl">
-              “We sign only what we can stand behind.”
+              “We put our name only to work we can fully stand behind.”
             </blockquote>
             <figcaption className="mt-3 font-mono text-[10px] uppercase tracking-[0.22em] text-white/50">
-              Founding principle · {site.name}
+              Our Founding Principle · {site.name}
             </figcaption>
           </figure>
         </div>
@@ -358,7 +358,7 @@ export default function AboutPage() {
       <section className="border-b border-navy-900/10 bg-white">
         <div className="mx-auto max-w-7xl px-6 py-16 sm:px-10 lg:py-20">
           <SectionHeading
-            eyebrow="Qualifications & memberships"
+            eyebrow="Accreditations and memberships"
             title="Regulated, registered and continually trained."
           />
           <ul className="mt-10 flex flex-wrap gap-3">
@@ -377,8 +377,8 @@ export default function AboutPage() {
       {/* ============ APPROACH ============ */}
       <section className="mx-auto max-w-7xl px-6 py-20 sm:px-10 lg:py-24">
         <SectionHeading
-          eyebrow="Approach to client service"
-          title="Four steps, every engagement, no shortcuts."
+          eyebrow="Our Approach"
+          title="How We Work With Clients."
         />
         <div className="mt-12 grid gap-10 md:grid-cols-2 lg:grid-cols-4">
           {approach.map((a, i) => (
@@ -400,16 +400,15 @@ export default function AboutPage() {
         <div className="mx-auto max-w-4xl px-6 py-20 text-center sm:px-10">
           <Eyebrow>Work with us</Eyebrow>
           <h2 className="mt-4 font-display text-3xl leading-tight text-navy-900 sm:text-4xl">
-            Meet the firm behind the signature.
+            Let's discuss how we can help
           </h2>
           <p className="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-ink/70">
-            One conversation is usually enough to know whether we are the right firm for your
-            next audit, filing or decision.
+            Speak with our team to explore how we can support your audit, tax or advisory needs.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <Button href="/consultation">Request a Consultation</Button>
             <Button href="/careers" variant="outline">
-              Join the practice
+              Careers at Baral & K.C.
             </Button>
           </div>
         </div>
