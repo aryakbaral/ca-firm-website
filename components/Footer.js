@@ -23,8 +23,7 @@ export default function Footer() {
             </span>
           </div>
           <p className="mt-6 max-w-sm text-sm leading-relaxed text-white/70">
-            Every engagement is conducted under strict confidentiality, professional independence
-            and the ethical standards of the Institute of Chartered Accountants of Nepal (ICAN).
+            Baral & K.C. Associates is a firm of Chartered Accountants registered with the Institute of Chartered Accountants of Nepal (ICAN). All engagements are conducted in accordance with the ICAN Code of Ethics, including its requirements on independence and confidentiality.
           </p>
         </div>
 
