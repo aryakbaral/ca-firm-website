@@ -16,17 +16,17 @@ export const metadata = {
 ------------------------------------------------------------------- */
 
 const facts = [
-  { label: "Established", value: "2009" },
+  { label: "Established", value: "2021" },
   { label: "Head office", value: "Lalitpur" },
   { label: "Practice areas", value: "Six" },
-  { label: "Professionals", value: "12" },
+  { label: "Professionals", value: ">12" },
 ];
 
 const mission =
-  "To protect confidence in financial information — delivering audit, tax and advisory work of verifiable quality, on time, in plain language and at a fair fee.";
+  "To strengthen confidence in financial information by delivering audit, tax and advisory services of the highest professional quality - timely, clear and responsive to each client's needs.";
 
 const vision =
-  "To be Nepal's most trusted independent practice: the firm boards, donors and entrepreneurs call first when the numbers must be right.";
+  "To be recognised as a leading independent professional services firm in Nepal - the trusted adviser of choice for boards, investors, development partners and entrepreneurs.";
 
 const values = [
   {
@@ -62,16 +62,16 @@ const values = [
 ];
 
 const story = [
-  "The firm began with a simple observation: most financial statements in Nepal are prepared to satisfy a filing, not to support a decision. We set out to change that for every client we serve — by making the work verifiable, the language plain and the deadlines non-negotiable.",
-  "Years later the practice spans six disciplines and fourteen industries, but the method is unchanged: a partner plans the work, a second reviewer challenges it, and nothing is signed until both are satisfied.",
-  "We remain deliberately mid-sized. Large enough to field specialist teams for donor audits and group consolidations; small enough that the partner who signs your report knows your ledger by name.",
+  "The firm was founded on a simple belief: financial information should do more than satisfy a regulatory filing - it should support sound decisions. That belief continues to shape our work, with an emphasis on verifiable quality, clear communication and timely delivery.",
+  "Today the firm serves clients across fourteen industries through six service lines. Our approach remains consistent: every engagement is partner-led and subject to independent quality review before any report is issued.",
+  "Our size is a deliberate strength. We have the depth to deliver specialist engagements such as donor audits and group consolidations, while providing the personal, partner-level attention that larger firms often cannot.",
 ];
 
 const milestones = [
   {
-    year: "2009",
-    title: "The firm is founded",
-    text: "Two Chartered Accountants open a practice in Lalitpur with three clients and one principle: sign only what you can stand behind.",
+    year: "2021",
+    title: "Firm Established",
+    text: "Baral & K.C. Associates is founded in Lalitpur by two Chartered Accountants.",
   },
   {
     year: "2012",
