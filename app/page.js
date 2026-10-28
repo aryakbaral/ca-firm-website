@@ -52,7 +52,7 @@ const credentials = [
   { label: "Response", value: "Enquiries answered within one business day" },
 ];
 
-const principles = ["Partner-signed reports", "Documented working papers", "Two-level review, minimum"];
+const principles = ["Partner-Led Engagements", "Fully Documented Audit Evidence", "Independent Second-Level Quality Review"];
 
 const whyUs = [
   {
@@ -236,7 +236,7 @@ export default function Home() {
                 “Our purpose is to strengthen confidence in financial information, so that our clients and their stakeholders can make decisions with assurance.”
               </blockquote>
               <figcaption className="mt-6 font-mono text-[11px] uppercase tracking-[0.24em] text-ink/55">
-                Engagement philosophy · {site.name}
+                Our Purpose · {site.name}
               </figcaption>
             </figure>
             <ul className="mt-8 grid gap-3 sm:grid-cols-3">
@@ -276,9 +276,9 @@ export default function Home() {
       {/* ============ SERVICES LEDGER ============ */}
       <section className="mx-auto max-w-7xl px-6 py-20 sm:px-10 lg:py-24">
         <div className="flex flex-wrap items-end justify-between gap-6">
-          <SectionHeading eyebrow="What we do" title="Six practices, one standard of care." />
+          <SectionHeading eyebrow="Our Services" title="Integrated services, delivered to one standard of quality." />
           <Button href="/services" variant="outline">
-            All services
+            View All Services
           </Button>
         </div>
         <div className="mt-12 border-t border-navy-900/10">
