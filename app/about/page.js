@@ -32,32 +32,32 @@ const values = [
   {
     no: "01",
     title: "Integrity",
-    text: "We say what we found, not what is convenient. Our reports carry no favours and no omissions.",
+    text: "We act honestly and report our findings objectively and completely, whatever the circumstances.",
   },
   {
     no: "02",
     title: "Independence",
-    text: "No conflicts, no self-review, no pressure. Where independence cannot be held, we decline the engagement.",
+    text: "We safeguard our objectivity at all times. Where our independence could be compromised, we decline the engagement.",
   },
   {
     no: "03",
     title: "Confidentiality",
-    text: "Client information is accessed only by the engagement team and released only with partner approval or legal obligation.",
+    text: "Client information is accessed only by the engagement team and disclosed only with client consent or where required by law.",
   },
   {
     no: "04",
     title: "Competence",
-    text: "Every professional maintains continuing development hours; every opinion rests on current standards and cited evidence.",
+    text: "Our people maintain their technical expertise through continuing professional development, and every opinion we issue is grounded in current standards and evidence.",
   },
   {
     no: "05",
     title: "Accountability",
-    text: "The partner who signs your report answers your calls. Responsibility is never delegated away.",
+    text: "The engagement partner remains personally accountable to the client throughout the engagement.",
   },
   {
     no: "06",
     title: "Client service",
-    text: "Deadlines are commitments, jargon is avoided, and advice arrives with costs and options quantified.",
+    text: "We meet our commitments, communicate clearly and provide advice that is practical and decision-ready.",
   },
 ];
 
@@ -74,34 +74,34 @@ const milestones = [
     text: "Baral & K.C. Associates is founded in Lalitpur by two Chartered Accountants.",
   },
   {
-    year: "2012",
-    title: "First donor-funded audits",
+    year: "2021",
+    title: "First Donor-funded audits",
     text: "Appointed auditor to international NGO programmes; the grant-compliance and donor-reporting desk is established.",
   },
   {
-    year: "2015",
-    title: "Tax practice expands",
-    text: "A dedicated team for IRD representation, VAT/GST advisory and corporate tax planning is formed.",
+    year: "2022",
+    title: "Tax Practice expands",
+    text: "A dedicated team for IRD representation, VAT advisory and corporate tax planning is formed.",
   },
   {
-    year: "2018",
-    title: "Advisory & internal audit",
+    year: "2022",
+    title: "Advisory & Internal Audit",
     text: "Risk advisory, internal control reviews and transaction due diligence become a standing practice area.",
   },
   {
-    year: "2021",
-    title: "Digital bookkeeping desk",
-    text: "Cloud accounting, payroll and monthly-close services launched for SMEs, cooperatives and startups.",
+    year: "2023",
+    title: "Digital Accounting Services",
+    text: "Cloud-based accounting, payroll and monthly reporting services introduced for SMEs, cooperatives and emerging businesses.",
   },
   {
-    year: "2024",
-    title: "A twelve-person practice",
-    text: "Article clerks, managers and partners under one roof; two-level technical review is formalised firm-wide.",
+    year: "2023",
+    title: "Firm-wide quality framework",
+    text: "Team grows to twelve Qualified Professionals; two-level technical review formalised across all engagements.",
   },
   {
     year: "2026",
     title: "Today",
-    text: "Serving companies, cooperatives, NGOs, financial institutions and public bodies across fourteen industries.",
+    text: "Serving companies, cooperatives, financial institutions, development organisations and public bodies across fourteen industries.",
   },
 ];
 
@@ -194,15 +194,16 @@ export default function AboutPage() {
         <div aria-hidden="true" className="column-rules absolute inset-0" />
         <div aria-hidden="true" className="rosette absolute -right-48 -top-64 h-[46rem] w-[46rem]" />
         <div className="relative mx-auto max-w-7xl px-6 pb-16 pt-14 sm:px-10 lg:pb-20 lg:pt-20">
-          <Eyebrow>About the firm</Eyebrow>
+                <Eyebrow>About us</Eyebrow>
           <h1 className="mt-6 max-w-3xl font-display text-4xl leading-[1.06] text-navy-900 sm:text-5xl lg:text-[3.4rem]">
-            Independence, competence and <em className="italic text-gold-600">quiet rigour</em> —
-            since day one.
+                    <em className="italic text-gold-600">Trusted</em> advisers to Nepal’s businesses and
+            institutions since 2021.
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink/75">
-            {site.name} is a Lalitpur practice of Chartered Accountants serving companies,
-            cooperatives, NGOs, financial institutions and public bodies. This page sets out who
-            we are, how we work and the commitments we do not negotiate.
+                        {site.name} is a firm of Chartered Accountants headquartered in Lalitpur. We provide
+            audit, tax, accounting and advisory services to companies, cooperatives, financial
+            institutions, development organisations and public bodies, built on a commitment to
+            independence, quality and integrity.
           </p>
 
           <dl className="mt-12 grid grid-cols-2 gap-px border border-navy-900/10 bg-navy-900/10 sm:grid-cols-4">
@@ -247,9 +248,9 @@ export default function AboutPage() {
       {/* ============ CORE VALUES ============ */}
       <section className="mx-auto max-w-7xl px-6 py-20 sm:px-10 lg:py-24">
         <SectionHeading
-          eyebrow="Core values"
-          title="Six commitments behind every signature."
-          intro="These are not wall posters. Each value maps to a rule in our engagement manual that a reviewer can check."
+          eyebrow="Our Values"
+          title="The Principles that guide our Work."
+          intro="Our values are embedded in our quality management system and reflected in the way we plan, perform and review every engagement."
         />
         <div className="mt-12 grid gap-px border border-navy-900/10 bg-navy-900/10 md:grid-cols-2 lg:grid-cols-3">
           {values.map((v, i) => (
@@ -269,7 +270,7 @@ export default function AboutPage() {
         <div className="mx-auto grid max-w-7xl gap-14 px-6 py-20 sm:px-10 lg:grid-cols-[0.9fr_1.1fr] lg:py-24">
           <div className="lg:sticky lg:top-32 lg:self-start">
             <Reveal>
-              <SectionHeading eyebrow="Our story" title="Years of standing behind the numbers." />
+              <SectionHeading eyebrow="Our story" title="Over 20 Years of standing behind the numbers." />
               <div className="mt-6 space-y-5">
                 {story.map((p) => (
                   <p key={p.slice(0, 24)} className="leading-relaxed text-ink/75">
@@ -301,7 +302,7 @@ export default function AboutPage() {
       <section className="mx-auto max-w-7xl px-6 py-20 sm:px-10 lg:py-24">
         <SectionHeading
           eyebrow="Leadership"
-          title="The people who sign the work."
+          title="Our Leadership Team."
           intro="Partner and manager profiles with photographs will be published shortly; responsibilities are shown as they stand today."
         />
         <div className="mt-12 grid gap-8 md:grid-cols-2 xl:grid-cols-4">
