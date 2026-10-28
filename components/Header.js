@@ -51,7 +51,7 @@ export default function Header() {
             <img
               src="/logo-mark.png"
               alt=""
-              className="h-11 w-11 rounded-full object-cover"
+              className="h-11 w-11 rounded-full object-contain"
             />
             <span>
               <span className="block font-display text-lg leading-tight text-navy-900">
