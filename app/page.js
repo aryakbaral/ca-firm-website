@@ -310,7 +310,7 @@ export default function Home() {
                   </span>
                 </span>
                 <span className="hidden font-mono text-[11px] uppercase tracking-[0.2em] text-ink/40 transition-all group-hover:translate-x-1 group-hover:text-gold-700 md:block">
-                  View practice →
+                  Learn More →
                 </span>
               </Link>
             </Reveal>
@@ -323,13 +323,13 @@ export default function Home() {
         <div className="mx-auto grid max-w-7xl gap-12 px-6 py-20 sm:px-10 lg:grid-cols-[0.9fr_1.1fr] lg:py-24">
           <Reveal>
             <SectionHeading
-              eyebrow="Sector experience"
-              title="Fourteen industries, one disciplined method."
-              intro="Regulatory environments differ; our method does not. We map the statutes, standards and reporting packs your sector lives by before fieldwork begins."
+              eyebrow="Industries"
+              title="Industry insight that informs every engagement."
+              intro="Every sector operates under its own regulatory framework and reporting requirements. Our teams bring an understanding of these sector-specific rules to each engagement, so that risks are identified early and our work is relevant to your business."
             />
             <div className="mt-8">
               <Button href="/industries" variant="outline">
-                Industries we serve
+                Explore our industry experience
               </Button>
             </div>
           </Reveal>
@@ -351,8 +351,8 @@ export default function Home() {
       {/* ============ WHY US ============ */}
       <section className="mx-auto max-w-7xl px-6 py-20 sm:px-10 lg:py-24">
         <SectionHeading
-          eyebrow="Why firms choose us"
-          title="The difference is in the discipline."
+          eyebrow="Why Baral & K.C."
+          title="What Sets Us Apart."
         />
         <div className="mt-12 grid gap-px border border-navy-900/10 bg-navy-900/10 md:grid-cols-2">
           {whyUs.map((w, i) => (
