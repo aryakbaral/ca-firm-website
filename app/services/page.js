@@ -37,12 +37,12 @@ export default function ServicesPage() {
         <div className="relative mx-auto max-w-7xl px-6 pb-14 pt-14 sm:px-10 lg:pb-20 lg:pt-20">
           <Eyebrow>Our services</Eyebrow>
           <h1 className="mt-5 max-w-3xl font-display text-4xl leading-[1.06] text-navy-900 sm:text-5xl lg:text-[3.3rem]">
-            Six practices, <em className="italic text-gold-600">one standard</em> of care.
+            <em className="italic text-gold-600">Comprehensive</em> audit, tax and advisory services
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink/75">
-            Every engagement — an audit, a filing, a feasibility study — runs on the same
-            discipline: a partner plans it, a second reviewer challenges it, and nothing is
-            delivered until both are satisfied.
+            We help organisations meet their regulatory obligations, manage risk and make better decisions. 
+            Whatever the engagement, a partner plans it, a second reviewer challenges it, and 
+            nothing is delivered until both are satisfied.
           </p>
         </div>
       </section>
@@ -52,7 +52,7 @@ export default function ServicesPage() {
         <div className="mx-auto max-w-7xl px-6 sm:px-10">
           <div className="border-b border-navy-900/10 py-5">
             <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-ink/50">
-              Practice index · 06 disciplines
+              Our services · 06 disciplines
             </p>
           </div>
           {services.map((s, i) => (
