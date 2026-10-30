@@ -11,19 +11,19 @@ export const metadata = {
 
 const engagementModels = [
   {
-    mono: "Fixed scope · Fixed fee",
-    title: "One-off engagement",
-    text: "A defined assignment with an agreed scope and fee — a statutory audit, a due diligence, a tax health check, a clean-up.",
+    mono: "Project Engagement",
+    title: "One-off engagement · Fixed scope · Fixed fee",
+    text: "A defined assignment with an agreed scope, timeline and fee, such as a statutory audit, due diligence or tax health check.",
   },
   {
     mono: "Monthly · Year-round",
     title: "Annual retainer",
-    text: "We own your compliance calendar: tax, VAT, payroll and filings across the year, with advisory hours included.",
+    text: "Year-round management of your tax, VAT, payroll and statutory filing obligations, with an agreed allocation of advisory support.",
   },
   {
-    mono: "Function-as-a-service",
+    mono: "Managed Services",
     title: "Outsourced desk",
-    text: "Your accounting, payroll or internal audit function run end-to-end from our office, with monthly reporting to yours.",
+    text: "We operate your accounting, payroll or internal audit function on an outsourced basis, with regular reporting to management.",
   },
 ];
 
@@ -83,7 +83,7 @@ export default function ServicesPage() {
                   </span>
                 </span>
                 <span className="hidden font-mono text-[11px] uppercase tracking-[0.2em] text-ink/40 transition-all group-hover:translate-x-1 group-hover:text-gold-700 md:block">
-                  View practice →
+                  Learn More →
                 </span>
               </Link>
             </Reveal>
@@ -95,9 +95,9 @@ export default function ServicesPage() {
       <section className="border-y border-navy-900/10 bg-mist">
         <div className="mx-auto max-w-7xl px-6 py-20 sm:px-10 lg:py-24">
           <SectionHeading
-            eyebrow="How to engage us"
-            title="Three ways to work with the firm."
-            intro="Most clients begin with a one-off engagement and move to a retainer once they see the calendar run itself."
+            eyebrow="Ways to Work With Us"
+            title="Flexible Engagement Models."
+            intro="Our engagement models are designed around your needs : from a single defined assignment to a long-term advisory relationship."
           />
           <div className="mt-12 grid gap-8 md:grid-cols-3">
             {engagementModels.map((m, i) => (
@@ -120,16 +120,15 @@ export default function ServicesPage() {
         <div className="mx-auto max-w-4xl px-6 py-20 text-center sm:px-10">
           <Eyebrow>Not sure where to start?</Eyebrow>
           <h2 className="mt-4 font-display text-3xl leading-tight text-navy-900 sm:text-4xl">
-            Describe the problem; we will name the practice.
+            Talk to us about your requirements.
           </h2>
           <p className="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-ink/70">
-            One short conversation usually sorts compliance from advisory — and tells you whether
-            you need us at all.
+            Share your situation with us and we will recommend the most appropriate service and next steps.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <Button href="/consultation">Request a Consultation</Button>
             <Button href="/contact" variant="outline">
-              Contact Our Team
+              Contact Us
             </Button>
           </div>
         </div>
