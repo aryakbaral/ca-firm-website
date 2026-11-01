@@ -213,7 +213,7 @@ export default function ServicePage({ params }) {
           </div>
           <div className="mt-12 border-t border-white/10 pt-8">
             <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-white/50">
-              Other practices
+              Related Services
             </p>
             <div className="mt-4 flex flex-wrap gap-3">
               {others.map((o) => (
