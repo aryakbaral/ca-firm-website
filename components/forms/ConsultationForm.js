@@ -91,7 +91,7 @@ export default function ConsultationForm({ initialService = "" }) {
         <fieldset className="sm:col-span-2">
           <legend className={labelCls}>Preferred consultation type *</legend>
           <div className="mt-3 flex flex-wrap gap-6">
-            {["In-person at our Lalitpur office", "Phone call", "Video meeting"].map((m, i) => (
+            {["In-person (Lalitpur office)", "Phone call", "Video Call"].map((m, i) => (
               <label key={m} className="flex items-center gap-2 text-sm text-ink/80">
                 <input type="radio" name="consultation_type" value={m} defaultChecked={i === 0} className="h-4 w-4 accent-[#a8893f]" />
                 {m}
@@ -128,14 +128,13 @@ export default function ConsultationForm({ initialService = "" }) {
         </div>
 
         <div className="sm:col-span-2">
-          <label htmlFor="message" className={labelCls}>What should we prepare for?</label>
+          <label htmlFor="message" className={labelCls}>Briefly describe your Requirements?</label>
           <textarea id="message" name="message" rows={4} className={`${inputCls} mt-2`} placeholder="Context, deadlines, documents you can share…" />
         </div>
 
         <div className="sm:col-span-2 border border-navy-900/10 bg-paper p-4 text-sm leading-relaxed text-ink/70">
-          <span className="font-semibold text-navy-900">Documents?</span> Bring them to the
-          meeting, or email them to {site.email} quoting your name — encrypted upload arrives
-          with the client portal.
+          <span className="font-semibold text-navy-900">Documents?</span> Your may bring relevant documents to the
+          meeting, or email them to {site.email} in advance quoting your name.
         </div>
 
         <div className="sm:col-span-2">
@@ -159,7 +158,7 @@ export default function ConsultationForm({ initialService = "" }) {
         disabled={status === "sending"}
         className="mt-7 inline-flex items-center justify-center bg-gold-500 px-6 py-3 font-mono text-[11px] uppercase tracking-[0.22em] text-navy-950 transition-colors hover:bg-gold-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-600 disabled:opacity-60"
       >
-        {status === "sending" ? "Sending…" : "Request consultation"}
+        {status === "sending" ? "Sending…" : "Request A consultation"}
       </button>
 
       {status === "error" && (
