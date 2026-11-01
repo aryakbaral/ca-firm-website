@@ -11,18 +11,18 @@ export const metadata = {
 const steps = [
   {
     no: "01",
-    title: "Tell us the need",
-    text: "Two minutes on the form: what must be assured, filed, fixed or planned, and how you prefer to meet.",
+    title: "Share Your Requirements",
+    text: "Complete the short form below, telling us about your needs and how you would prefer to meet.",
   },
   {
     no: "02",
-    title: "We confirm within one business day",
-    text: "A partner — not an assistant — replies with a named slot and, if useful, a short list of documents to bring.",
+    title: "Confirmation",
+    text: "Within one business day, a senior member of our team will confirm a meeting time and let you know of any documents that would be helpful.",
   },
   {
     no: "03",
-    title: "The meeting",
-    text: "Forty-five minutes, no charge and no obligation. You leave with a clear next step, whether or not you hire us.",
+    title: "Consultation",
+    text: "A 45-minute meeting at no charge and with no obligation, concluding with clear, practical next steps.",
   },
 ];
 
@@ -37,11 +37,10 @@ export default function ConsultationPage({ searchParams }) {
         <div className="relative mx-auto max-w-7xl px-6 pb-14 pt-14 sm:px-10 lg:pb-20 lg:pt-20">
           <Eyebrow>Request a consultation</Eyebrow>
           <h1 className="mt-5 max-w-3xl font-display text-4xl leading-[1.06] text-navy-900 sm:text-5xl lg:text-[3.3rem]">
-            Forty-five minutes with a <em className="italic text-gold-600">partner</em>.
+            Schedule a consultation with <em className="italic text-gold-600">our Leaders</em>.
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink/75">
-            In person at our Lalitpur office, by phone or by video — whichever suits you. The
-            first conversation is free, confidential and genuinely useful.
+            Meet with us in person at our Lalitpur office, by phone or by video call. Your initial consultation is complimentary and confidential.
           </p>
         </div>
       </section>
