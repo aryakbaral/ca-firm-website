@@ -29,15 +29,23 @@ export default function ServicePage({ params }) {
         <div className="relative mx-auto max-w-7xl px-6 pb-14 pt-14 sm:px-10 lg:pb-20 lg:pt-20">
           <div className="grid gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
             <div>
-              <Eyebrow>{`Practice ${String(index + 1).padStart(2, "0")} of 06`}</Eyebrow>
+                <Eyebrow>
+                <Link href="/services" className="transition-colors hover:text-navy-900">
+                  Services
+                </Link>
+                <span className="mx-2 text-ink/40">/</span>
+                {service.title}
+              </Eyebrow>
               <h1 className="mt-5 font-display text-4xl leading-[1.06] text-navy-900 sm:text-5xl lg:text-[3.2rem]">
                 {service.title}
               </h1>
               <p className="mt-5 max-w-2xl text-lg leading-relaxed text-ink/75">{service.tagline}</p>
               <div className="mt-8 flex flex-wrap gap-4">
-                <Button href={`/consultation?service=${service.slug}`}>Request This Service</Button>
+               <Button href={`/consultation?service=${service.slug}`}>
+                  Discuss your {service.cta}
+                </Button>
                 <Button href="/contact" variant="outline">
-                  Talk to an Expert
+                  Contact us
                 </Button>
               </div>
             </div>
@@ -195,11 +203,11 @@ export default function ServicePage({ params }) {
               </h2>
             </div>
             <div className="flex flex-wrap gap-4">
-              <Button href={`/consultation?service=${service.slug}`} variant="gold">
-                Request This Service
+                            <Button href={`/consultation?service=${service.slug}`} variant="gold">
+                Discuss your {service.cta}
               </Button>
               <Button href="/contact" variant="light">
-                Contact Our Team
+                Contact us
               </Button>
             </div>
           </div>
