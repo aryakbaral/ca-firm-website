@@ -95,8 +95,8 @@ export default function ServicePage({ params }) {
       {/* Who needs it */}
       <section className="mx-auto max-w-7xl px-6 py-20 sm:px-10">
         <SectionHeading
-          eyebrow="Who needs it"
-          title="Built for the entities the law — and reality — demand it of."
+          eyebrow="Client Groups"
+          title="Who We Work With"
         />
         <ul className="mt-10 grid gap-px border border-navy-900/10 bg-navy-900/10 sm:grid-cols-2 lg:grid-cols-3">
           {service.who.map((w, i) => (
@@ -134,7 +134,7 @@ export default function ServicePage({ params }) {
       {/* Benefits + deliverables */}
       <section className="mx-auto grid max-w-7xl gap-14 px-6 py-20 sm:px-10 lg:grid-cols-2 lg:py-24">
         <Reveal>
-          <SectionHeading eyebrow="Benefits" title="What changes for you." />
+          <SectionHeading eyebrow="Benefits" title="How We Add Value." />
           <ul className="mt-8 space-y-4">
             {service.benefits.map((b) => (
               <li key={b} className="flex gap-4 border-b border-navy-900/10 pb-4">
@@ -154,7 +154,7 @@ export default function ServicePage({ params }) {
           </ul>
         </Reveal>
         <Reveal delay={120}>
-          <SectionHeading eyebrow="Deliverables" title="What lands on your desk." />
+          <SectionHeading eyebrow="Deliverables" title="What You Receive." />
           <ol className="mt-8">
             {service.deliverables.map((d, i) => (
               <li key={d} className="flex items-baseline gap-4 border-b border-navy-900/10 py-4">
