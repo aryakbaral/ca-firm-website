@@ -53,9 +53,9 @@ export default async function InsightsPage({ searchParams }) {
         <div aria-hidden="true" className="column-rules absolute inset-0" />
         <div aria-hidden="true" className="rosette absolute -right-48 -top-64 h-[42rem] w-[42rem]" />
         <div className="relative mx-auto max-w-7xl px-6 pb-14 pt-14 sm:px-10 lg:pb-20 lg:pt-20">
-          <Eyebrow>Knowledge hub</Eyebrow>
+          <Eyebrow>Insights</Eyebrow>
           <h1 className="mt-5 max-w-3xl font-display text-4xl leading-[1.06] text-navy-900 sm:text-5xl lg:text-[3.3rem]">
-            Updates worth <em className="italic text-gold-600">your attention</em>.
+            Insights and <em className="italic text-gold-600">Regulatory Updates</em>.
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink/75">
             Tax alerts, audit updates, standards notes and compliance calendars — written by the
