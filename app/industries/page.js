@@ -93,20 +93,20 @@ export default function IndustriesPage() {
       <section className="relative overflow-hidden bg-navy-950">
         <div aria-hidden="true" className="ledger-grid absolute inset-0" />
         <div className="relative mx-auto max-w-4xl px-6 py-20 text-center sm:px-10">
-          <Eyebrow onDark>Beyond the list</Eyebrow>
+          <Eyebrow onDark>Other Industries</Eyebrow>
           <h2 className="mt-4 font-display text-3xl leading-tight text-white sm:text-4xl">
-            Don&apos;t see your industry? The method still applies.
+            Don&apos;t see your industry listed?
           </h2>
           <p className="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-white/70">
-            Cooperatives, media houses, airlines, monasteries — the discipline transfers: map the
-            law, test the numbers, report in plain language.
-          </p>
+        Our experience extends to many other sectors, including cooperatives, media and aviation. 
+        Contact us to discuss how we can support your organisation.    
+             </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <Button href="/consultation" variant="gold">
               Request a Consultation
             </Button>
             <Button href="/contact" variant="light">
-              Contact Our Team
+              Contact Us
             </Button>
           </div>
         </div>
