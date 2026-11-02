@@ -24,17 +24,17 @@ export default function IndustriesPage() {
         <div aria-hidden="true" className="column-rules absolute inset-0" />
         <div aria-hidden="true" className="rosette absolute -right-48 -top-64 h-[42rem] w-[42rem]" />
         <div className="relative mx-auto max-w-7xl px-6 pb-14 pt-14 sm:px-10 lg:pb-20 lg:pt-20">
-          <Eyebrow>Sector experience</Eyebrow>
+          <Eyebrow>Industries</Eyebrow>
           <h1 className="mt-5 max-w-3xl font-display text-4xl leading-[1.06] text-navy-900 sm:text-5xl lg:text-[3.3rem]">
-            Fourteen industries, <em className="italic text-gold-600">one disciplined</em> method.
+            Fourteen Industries, <em className="italic text-gold-600">One Disciplined</em> method.
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink/75">
-            Regulatory environments differ; our method does not. Before fieldwork begins we map
-            the statutes, directives and reporting packs your sector lives by — so nothing
-            material is a surprise.
+            Every industry faces its own regulatory requirements, risks and reporting obligations. 
+            Our method does not change: before fieldwork begins we map the statutes, 
+            directives and reporting packs your sector lives by — so nothing material is a surprise.
           </p>
           <p className="mt-8 font-mono text-[10px] uppercase tracking-[0.22em] text-ink/45">
-            Select a sector below to open its dossier
+            Select an industry to learn how we can help
           </p>
         </div>
       </section>
@@ -64,7 +64,7 @@ export default function IndustriesPage() {
                 </summary>
                 <div className="grid gap-10 bg-paper px-4 pb-10 pt-2 md:grid-cols-2 lg:pl-16">
                   <div>
-                    <Label>Common challenges</Label>
+                    <Label>Key Challenges</Label>
                     <ul className="mt-3 space-y-2">
                       {ind.challenges.map((c) => (
                         <li key={c} className="flex gap-3 text-sm leading-relaxed text-ink/75">
@@ -73,13 +73,13 @@ export default function IndustriesPage() {
                         </li>
                       ))}
                     </ul>
-                    <Label className="mt-6">Regulatory environment</Label>
+                    <Label className="mt-6">Regulatory Landscape</Label>
                     <p className="mt-3 text-sm leading-relaxed text-ink/75">{ind.regulatory}</p>
                   </div>
                   <div>
                     <Label>Audit & tax considerations</Label>
                     <p className="mt-3 text-sm leading-relaxed text-ink/75">{ind.considerations}</p>
-                    <Label className="mt-6">How we support you</Label>
+                    <Label className="mt-6">How we can help</Label>
                     <p className="mt-3 text-sm leading-relaxed text-ink/75">{ind.support}</p>
                   </div>
                 </div>
