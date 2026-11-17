@@ -1,4 +1,4 @@
-# Sterling & Grant — Chartered Accountants
+# Baral &  K.C.  — Chartered Accountants
 
 Corporate website for Sterling & Grant, a firm of Chartered Accountants providing
 audit & assurance, taxation, accounting, payroll, corporate secretarial and
